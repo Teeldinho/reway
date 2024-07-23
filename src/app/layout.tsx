@@ -4,6 +4,7 @@ import { PT_Sans } from "next/font/google";
 import "./globals.css";
 
 import { cn } from "@/lib/utils";
+import Header from "@/components/custom-reusable/header/Header";
 
 const suezOne = Suez_One({
   subsets: ["latin"],
@@ -29,7 +30,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={cn("min-h-screen bg-background font-ptSans antialiased", ptSans.variable, suezOne.variable)}>{children}</body>
+      <body className={cn("min-h-screen bg-background font-ptSans antialiased text-rewayBlack", ptSans.variable, suezOne.variable)}>
+        <section className="flex flex-col gap-4 w-full h-full">
+          <Header />
+          {children}
+        </section>
+      </body>
     </html>
   );
 }
