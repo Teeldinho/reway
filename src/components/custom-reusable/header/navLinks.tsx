@@ -8,7 +8,7 @@ export const NavLinks = [
   { title: "Shoes", link: "/shoes" },
   { title: "Equipment", link: "/equipment" },
   { title: "Gift", link: "/gift" },
-];
+] as const;
 
 export const NavIconLinks = [
   { title: "Gifts", link: "#", icon: <GiftIcon className="fill-rewayGrey hover:fill-primary h-full w-full" /> },

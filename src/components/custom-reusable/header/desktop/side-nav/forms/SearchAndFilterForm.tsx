@@ -9,7 +9,7 @@ import { toast } from "sonner";
 import { SearchAndFilterFormSchema, SearchAndFilterFormSchemaType } from "@/lib/types/types-and-schemas";
 import SearchIcon from "@/components/custom-reusable/icons/SearchIcon";
 import { dummyBrandsData } from "@/lib/dummy-data";
-import { ColorEnum } from "./helpers/color-helpers";
+import { ColourEnum } from "./helpers/color-helpers";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Slider } from "@/components/ui/slider";
 
@@ -70,9 +70,9 @@ export function SearchAndFilterForm() {
                   </SelectTrigger>
                 </FormControl>
                 <SelectContent>
-                  {Object.values(ColorEnum).map((color) => (
-                    <SelectItem key={color} value={color}>
-                      {color}
+                  {Object.values(ColourEnum).map((colour) => (
+                    <SelectItem key={colour} value={colour}>
+                      {colour}
                     </SelectItem>
                   ))}
                 </SelectContent>
