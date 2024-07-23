@@ -11,8 +11,8 @@ export const NavLinks = [
 ];
 
 export const NavIconLinks = [
-  { title: "Gifts", link: "#", icon: <GiftIcon className="fill-rewayGrey hover:fill-primary size-[28px] " /> },
-  { title: "Starred", link: "#", icon: <StarIcon className="fill-rewayGrey hover:fill-primary size-[28px]" /> },
-  { title: "Favourites", link: "#", icon: <HeartIcon className="fill-rewayGrey hover:fill-primary size-[28px]" /> },
-  { title: "Purchases", link: "#", icon: <TagIcon className="fill-rewayGrey hover:fill-primary size-[28px]" /> },
+  { title: "Gifts", link: "#", icon: <GiftIcon className="fill-rewayGrey hover:fill-primary h-full w-full" /> },
+  { title: "Starred", link: "#", icon: <StarIcon className="fill-rewayGrey hover:fill-primary h-full w-full" /> },
+  { title: "Favourites", link: "#", icon: <HeartIcon className="fill-rewayGrey hover:fill-primary h-full w-full" /> },
+  { title: "Purchases", link: "#", icon: <TagIcon className="fill-rewayGrey hover:fill-primary h-full w-full" /> },
 ];

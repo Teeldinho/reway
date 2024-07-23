@@ -9,7 +9,7 @@ type LogoProps = {
 export default function BrandLogo({ className }: LogoProps) {
   return (
     <div className={cn("h-[44.81px] w-[163.69px] relative", className)}>
-      <Image src={LogoIMG} alt="Logo" layout="fill" objectFit="contain" />
+      <Image src={LogoIMG} alt="Logo" fill />
     </div>
   );
 }

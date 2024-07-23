@@ -3,7 +3,7 @@
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { NavLinks } from "../navLinks";
+import { NavLinks } from "../../navLinks";
 
 export default function DesktopNavMainLinks() {
   const pathname = usePathname();

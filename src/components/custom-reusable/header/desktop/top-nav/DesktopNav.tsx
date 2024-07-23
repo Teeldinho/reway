@@ -1,12 +1,12 @@
 import Link from "next/link";
-import DesktopNavAuth from "./DesktopNavAuth";
-import DesktopNavMainLinks from "./DesktopNavMainLinks";
-import DesktopNavIconLinks from "./DesktopNavIconLinks";
-import BrandLogo from "../BrandLogo";
+import DesktopNavAuth from "@/components/custom-reusable/header/desktop/top-nav/DesktopNavAuth";
+import DesktopNavMainLinks from "@/components/custom-reusable/header/desktop/top-nav/DesktopNavMainLinks";
+import DesktopNavIconLinks from "@/components/custom-reusable/header/desktop/top-nav/DesktopNavIconLinks";
+import BrandLogo from "../../BrandLogo";
 
 export default function DesktopNav() {
   return (
-    <nav className="hidden w-full z-10 md:fixed md:top-0 md:flex md:flex-row md:items-center md:justify-between bg-white h-[92px] px-8">
+    <nav className="hidden w-full md:flex md:flex-row md:items-center md:justify-between bg-white h-[92px] px-8">
       <div className="flex items-center gap-12">
         {/* Logo */}
         <Link href={"/"}>
