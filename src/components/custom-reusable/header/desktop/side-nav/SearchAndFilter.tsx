@@ -1,8 +1,8 @@
 import ChevronLeftIcon from "@/components/custom-reusable/icons/ChevronLeftIcon";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import SearchAndFilterForm from "@/components/custom-reusable/header/desktop/side-nav/forms/SearchAndFilterForm";
 import SearchIcon from "@/components/custom-reusable/icons/SearchIcon";
 import { Button } from "@/components/ui/button";
+import { SearchAndFilterForm } from "@/components/custom-reusable/header/desktop/side-nav/forms/SearchAndFilterForm";
 
 export default function SearchAndFilter() {
   return (

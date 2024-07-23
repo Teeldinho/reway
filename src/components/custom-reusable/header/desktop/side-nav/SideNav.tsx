@@ -4,7 +4,7 @@ import MailListPrompt from "@/components/custom-reusable/header/desktop/side-nav
 
 export default function SideNav() {
   return (
-    <div className="flex flex-col gap-8 max-h-[95%] w-[25%]">
+    <div className="flex flex-col gap-8 max-h-[95%] w-[22.5%]">
       <SearchAndFilter />
       <div className="w-full h-full pl-8 flex flex-col gap-8 items-center">
         <SideBanner />
