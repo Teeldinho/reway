@@ -1,6 +1,6 @@
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
-import { Product } from "@/lib/types/types-and-schemas";
+import { Brand, Product } from "@/lib/types/types-and-schemas";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -27,6 +27,9 @@ export const getProductsForCategories = (products: Product[], category: string[]
   products.filter((product) => product.categories.some((productCategory) => category.includes(productCategory)));
 
 export const getProductsForBrand = (products: Product[], brandId: string) => products.filter((product) => product.metadata.brandId === brandId);
+
+export const getBrandForProduct = (brands: Brand[], productBrandId: string) =>
+  brands.find((brand) => brand.id === productBrandId)?.name || "Unknown Brand";
 
 export const getProductPercentageOff = (product: Product) => ((product.price - product.priceAfterDiscount) / product.price) * 100;
 

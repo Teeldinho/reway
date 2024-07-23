@@ -47,6 +47,7 @@ export const ProductSchema = z.object({
   price: z.number(),
   priceAfterDiscount: z.number(),
   stockRemaining: z.number(),
+  images: z.array(z.string()),
   metadata: z.object({
     fabrication: z.string(),
     colour: z.nativeEnum(ColourEnum),
