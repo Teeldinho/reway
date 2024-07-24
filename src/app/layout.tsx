@@ -35,18 +35,18 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={cn("min-h-screen bg-background font-ptSans antialiased text-rewayBlack flex", ptSans.variable, suezOne.variable)}>
-        <section className="flex flex-col gap-8 flex-1 overflow-hidden">
+      <body className={cn("min-h-screen w-screen bg-background font-ptSans antialiased text-rewayBlack", ptSans.variable, suezOne.variable)}>
+        <section className="h-screen w-full flex flex-col gap-8 overflow-hidden">
           <Header />
 
-          <div className="flex gap-8 flex-1 pr-8">
+          <div className="flex gap-2 flex-1 overflow-x-hidden overflow-y-auto">
             <SideNav />
 
-            <div className="flex-1 flex flex-col gap-8">
+            <div className="min-h-full flex-1 flex flex-col px-8 gap-8">
               <TopBanner />
-              <Card className="flex-1 border-2 border-muted">
-                <CardHeader>Breadcrumbs</CardHeader>
-                <CardContent className="flex-1 overflow-y-auto">{children}</CardContent>
+              <Card className="border-none p-0 flex flex-col gap-8">
+                <CardHeader className="z-20 p-0 w-full">Breadcrumbs</CardHeader>
+                <CardContent className="flex-1 overflow-y-auto p-0 pb-8 lg:pb-4">{children}</CardContent>
               </Card>
             </div>
           </div>

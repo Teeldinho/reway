@@ -22,10 +22,16 @@ export default function ProductCard({ product }: ProductCardProps) {
   const hasLowStock = useMemo(() => getProductHasLowStock(product), [product]);
 
   return (
-    <Card className="w-full max-w-[300px] group hover:cursor-pointer *:transition-all *:duration-500 border-none flex flex-col">
+    <Card className="border-4 border-transparent hover:border-primary w-full max-w-[400px] group hover:cursor-pointer transition-all duration-500 *:transition-all *:duration-500 flex flex-col">
+      {/* <Card className="border-4 border-transparent hover:border-primary w-full max-w-[300px] group hover:cursor-pointer transition-all duration-500 *:transition-all *:duration-500 flex flex-col"> */}
       <CardHeader className="bg-rewayLightGrey w-full p-0 ring-rewayLightGrey relative">
-        <AspectRatio ratio={16 / 10} className="relative h-full">
-          <Image src={product.images[0]} alt={`${product.name}-image`} fill className="object-cover" />
+        <AspectRatio ratio={16 / 10} className="relative h-full overflow-hidden">
+          <Image
+            src={product.images[0]}
+            alt={`${product.name}-image`}
+            fill
+            className="object-cover group-hover:scale-110 transition-transform duration-500"
+          />
         </AspectRatio>
 
         <Badge
@@ -34,7 +40,7 @@ export default function ProductCard({ product }: ProductCardProps) {
           })}
         >
           <Tag className="size-5 text-white" />
-          <p className="italic text-[16px] leading-[20.7px] font-bold">{`-${formatToPercentage(percentageOff)} off`}</p>
+          <span className="italic text-[16px] leading-[20.7px] font-bold">{`-${formatToPercentage(percentageOff)} off`}</span>
         </Badge>
 
         <Badge
@@ -45,7 +51,7 @@ export default function ProductCard({ product }: ProductCardProps) {
         </Badge>
       </CardHeader>
 
-      <div className="border-4 border-transparent group-hover:border-primary border-t-0 group-hover:bg-rewayLightGrey">
+      <div className="group-hover:bg-rewayLightGrey">
         <CardContent className="pb-[6px] pt-4 px-4 flex flex-col gap-3">
           <CardTitle className="font-suezOne text-[18px] leading-[23.51px] uppercase group-hover:text-primary line-clamp-2 transition-all duration-300 text-black">
             {product.name}
