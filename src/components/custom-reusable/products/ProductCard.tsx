@@ -23,7 +23,6 @@ export default function ProductCard({ product }: ProductCardProps) {
 
   return (
     <Card className="border-4 border-transparent hover:border-primary w-full max-w-[400px] group hover:cursor-pointer transition-all duration-500 *:transition-all *:duration-500 flex flex-col">
-      {/* <Card className="border-4 border-transparent hover:border-primary w-full max-w-[300px] group hover:cursor-pointer transition-all duration-500 *:transition-all *:duration-500 flex flex-col"> */}
       <CardHeader className="bg-rewayLightGrey w-full p-0 ring-rewayLightGrey relative">
         <AspectRatio ratio={16 / 10} className="relative h-full overflow-hidden">
           <Image
