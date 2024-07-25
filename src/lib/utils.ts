@@ -1,6 +1,7 @@
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 import { Brand, Product } from "@/lib/types/types-and-schemas";
+import { Option } from "@/components/ui/multi-select";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -34,3 +35,10 @@ export const getBrandForProduct = (brands: Brand[], productBrandId: string) =>
 export const getProductPercentageOff = (product: Product) => ((product.price - product.priceAfterDiscount) / product.price) * 100;
 
 export const getProductHasLowStock = (product: Product) => product.stockRemaining < 5;
+
+export function transformToOptions<T>(items: T[], valueKey: keyof T, labelKey: keyof T): Option[] {
+  return items.map((item) => ({
+    value: String(item[valueKey]),
+    label: String(item[labelKey]),
+  }));
+}

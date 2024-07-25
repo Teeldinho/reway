@@ -1,5 +1,6 @@
 import ProductCard from "@/components/custom-reusable/products/ProductCard";
 import ProductDetailsInfo from "@/components/custom-reusable/products/ProductDetailsInfo";
+import ProductOptions from "@/components/custom-reusable/products/ProductOptions";
 import { dummyProductsData } from "@/lib/dummy-data";
 
 export default function Home() {
@@ -10,6 +11,8 @@ export default function Home() {
       ))}
 
       {/* <ProductDetailsInfo product={dummyProductsData[3]} /> */}
+
+      {/* <ProductOptions product={dummyProductsData[7]} /> */}
     </div>
   );
 }

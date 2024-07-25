@@ -3,32 +3,14 @@ import { NavLinks } from "@/components/custom-reusable/header/navLinks";
 import { z } from "zod";
 
 export const MailListFormSchema = z.object({
-  email: z.string().email({ message: "Please enter a valid email address." }),
+  email: z
+    .string({
+      required_error: "Please enter your email address.",
+    })
+    .email({ message: "Please enter a valid email address." }),
 });
 
 export type MailListFormSchemaType = z.infer<typeof MailListFormSchema>;
-
-export const SearchAndFilterFormSchema = z.object({
-  brands: z
-    .array(
-      z.object({
-        id: z.string(),
-        name: z.string(),
-        description: z.string(),
-      })
-    )
-    .default([]),
-  color: z.nativeEnum(ColourEnum).nullable(),
-  pricingRange: z
-    .number()
-    .min(0, {
-      message: "Price must be at least 0.",
-    })
-    .max(2500)
-    .default(0),
-});
-
-export type SearchAndFilterFormSchemaType = z.infer<typeof SearchAndFilterFormSchema>;
 
 export const BrandSchema = z.object({
   id: z.string(),
@@ -37,6 +19,16 @@ export const BrandSchema = z.object({
 });
 
 export type Brand = z.infer<typeof BrandSchema>;
+
+export const SearchAndFilterFormSchema = z.object({
+  brands: z.array(BrandSchema).default([]),
+  color: z.nativeEnum(ColourEnum).nullable(),
+  pricingRange: z.number().min(0, {
+    message: "Price must be at least 0.",
+  }),
+});
+
+export type SearchAndFilterFormSchemaType = z.infer<typeof SearchAndFilterFormSchema>;
 
 // Extract titles from NavLinks to maintain a 1-to-1 relationship with the categories:
 const categoryTitles = NavLinks.map((navLink) => navLink.title) as unknown as [string, ...string[]];
@@ -59,3 +51,16 @@ export const ProductSchema = z.object({
 });
 
 export type Product = z.infer<typeof ProductSchema>;
+
+export const ProductOptionsSchema = z.object({
+  size: z.string({
+    required_error: "Please select an email to display.",
+  }),
+  quantity: z
+    .number({
+      required_error: "Please select a quantity.",
+    })
+    .min(1, { message: "Quantity must be at least 1." }),
+});
+
+export type ProductOptionsType = z.infer<typeof ProductOptionsSchema>;

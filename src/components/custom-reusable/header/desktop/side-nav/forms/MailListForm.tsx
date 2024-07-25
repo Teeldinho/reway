@@ -20,8 +20,10 @@ export function MailListForm() {
 
   function onSubmit(data: MailListFormSchemaType) {
     toast.success(`Email submitted is: ${data.email}`, {
-      description: "You can now receive emails from us.",
+      description: "You can now receive emails from us. (fake success message)",
     });
+
+    form.reset();
   }
 
   return (
