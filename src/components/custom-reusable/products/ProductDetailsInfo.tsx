@@ -2,12 +2,12 @@ import { useMemo } from "react";
 import { Product } from "@/lib/types/types-and-schemas";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { dummyBrandsData } from "@/lib/dummy-data";
-import { getBrandForProduct } from "@/lib/utils";
 import { Store } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import ProductDetailsList from "@/components/custom-reusable/products/ProductDetailsList";
 import ProductDetailsPricing from "@/components/custom-reusable/products/ProductDetailsPricing";
 import ProductDetailsMetadata from "@/components/custom-reusable/products/ProductDetailsMetadata";
+import { getBrandForProduct } from "@/lib/types/product-helpers";
 
 type ProductCardProps = {
   product: Product;

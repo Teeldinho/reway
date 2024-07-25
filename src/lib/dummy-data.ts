@@ -1,93 +1,113 @@
-import { ColourEnum } from "@/components/custom-reusable/header/desktop/side-nav/forms/helpers/color-helpers";
-import { Brand, Product } from "@/lib/types/types-and-schemas";
+import { Brand, Category, Product } from "@/lib/types/types-and-schemas";
+import { CollectionsEnum } from "@/lib/types/product-helpers";
 
-import MainItem1 from "../../public/assets/Main item Image 01.png";
-import MainItem2 from "../../public/assets/Main item Image 02.png";
-import MainItem3 from "../../public/assets/Main item Image 03.png";
-import MainItem4 from "../../public/assets/Main item Image 04.png";
-import MainItem5 from "../../public/assets/Main item Image 05.png";
-
-import Boots01 from "../../public/assets/Boots 01.png";
-import Boots02 from "../../public/assets/Boots 02.png";
-import Boots03 from "../../public/assets/Boots 03.png";
-import Boots04 from "../../public/assets/Boots 04.png";
-import Boots05 from "../../public/assets/Boots 05.png";
-
-import Linen01 from "../../public/assets/linen-2.jpg";
-import Linen02 from "../../public/assets/linen-1.jpg";
-import Linen03 from "../../public/assets/linen-3.jpg";
-import Linen04 from "../../public/assets/linen-4.jpg";
-import Linen05 from "../../public/assets/linen-2.jpg";
-
-import Joggers01 from "../../public/assets/joggers-1.jpg";
-import Joggers02 from "../../public/assets/joggers-2.jpg";
-import Joggers03 from "../../public/assets/joggers-3.jpg";
-import Joggers04 from "../../public/assets/joggers-4.jpg";
-import Joggers05 from "../../public/assets/joggers-1.jpg";
-
-import Pole01 from "../../public/assets/pole-1.jpg";
-import Pole02 from "../../public/assets/pole-2.jpg";
-import Pole03 from "../../public/assets/pole-3.jpg";
-import Pole04 from "../../public/assets/pole-4.jpg";
-import Pole05 from "../../public/assets/pole-5.jpg";
-
-import Gift01 from "../../public/assets/gift-1.jpg";
-import Gift02 from "../../public/assets/gift-2.jpg";
-import Gift03 from "../../public/assets/gift-3.jpg";
-import Gift04 from "../../public/assets/gift-4.jpg";
-import Gift05 from "../../public/assets/gift-5.jpg";
-
-import Stove01 from "../../public/assets/stove-1.jpg";
-import Stove02 from "../../public/assets/stove-2.jpg";
-import Stove03 from "../../public/assets/stove-3.jpg";
-import Stove04 from "../../public/assets/stove-4.jpg";
-import Stove05 from "../../public/assets/stove-5.jpg";
-
-import Beauty01 from "../../public/assets/beauty-1.jpg";
-import Beauty02 from "../../public/assets/beauty-2.jpg";
-import Beauty03 from "../../public/assets/beauty-3.jpg";
-import Beauty04 from "../../public/assets/beauty-4.jpg";
-import Beauty05 from "../../public/assets/beauty-5.jpg";
+import {
+  MainItem1,
+  MainItem2,
+  MainItem3,
+  MainItem4,
+  MainItem5,
+  Boots01,
+  Boots02,
+  Boots03,
+  Boots04,
+  Boots05,
+  Linen01,
+  Linen02,
+  Linen03,
+  Linen04,
+  Linen05,
+  Joggers01,
+  Joggers02,
+  Joggers03,
+  Joggers04,
+  Joggers05,
+  Pole01,
+  Pole02,
+  Pole03,
+  Pole04,
+  Pole05,
+  Gift01,
+  Gift02,
+  Gift03,
+  Gift04,
+  Gift05,
+  Stove01,
+  Stove02,
+  Stove03,
+  Stove04,
+  Stove05,
+  Beauty01,
+  Beauty02,
+  Beauty03,
+  Beauty04,
+  Beauty05,
+  Sandals01,
+  Sandals02,
+  Sandals03,
+  Sandals04,
+  Sandals05,
+  FlipFlop01,
+  FlipFlop02,
+  FlipFlop03,
+  FlipFlop04,
+  FlipFlop05,
+} from "@/lib/product-assets";
+import { ColourEnum } from "./types/colour-helpers";
 
 export const dummyBrandsData: Brand[] = [
-  {
-    id: "1",
-    name: "Superbalist",
-    description: "Description for Superbalist brand.",
-  },
-  {
-    id: "2",
-    name: "Mango",
-    description: "Description for Mango brand.",
-  },
-  {
-    id: "3",
-    name: "Old Khakhi",
-    description: "Description for Old Khakhi brand.",
-  },
-  {
-    id: "4",
-    name: "Jack and Jones",
-    description: "Description for Jack and Jones brand.",
-  },
+  { id: "1", name: "Superbalist", description: "Description for Superbalist brand." },
+  { id: "2", name: "Mango", description: "Description for Mango brand." },
+  { id: "3", name: "Old Khakhi", description: "Description for Old Khakhi brand." },
+  { id: "4", name: "Jack and Jones", description: "Description for Jack and Jones brand." },
+];
+
+export const dummyCategoriesData: Category[] = [
+  { id: "1", name: "Boots", collection: CollectionsEnum.SHOES },
+  { id: "2", name: "Sneakers", collection: CollectionsEnum.SHOES },
+  { id: "3", name: "Sandals", collection: CollectionsEnum.SHOES },
+  { id: "4", name: "Linen", collection: CollectionsEnum.APPARELS },
+  { id: "5", name: "Joggers", collection: CollectionsEnum.APPARELS },
+  { id: "6", name: "Camping", collection: CollectionsEnum.EQUIPMENT },
+  { id: "7", name: "Hiking", collection: CollectionsEnum.EQUIPMENT },
+  { id: "8", name: "Holiday", collection: CollectionsEnum.GIFT },
+  { id: "9", name: "Luxury", collection: CollectionsEnum.GIFT },
 ];
 
 export const dummyProductsData: Product[] = [
   {
-    id: "1",
-    name: "Hargrave Ankle Boot",
-    price: 500,
-    priceAfterDiscount: 300,
-    stockRemaining: 5,
-    images: [MainItem1.src, MainItem2.src, MainItem3.src, MainItem4.src, MainItem5.src],
+    id: "3",
+    name: "Grayson Brogue",
+    price: 750,
+    priceAfterDiscount: 500,
+    stockRemaining: 4,
+    images: [Boots02.src, MainItem3.src, MainItem5.src, MainItem2.src, MainItem1.src],
     metadata: {
       fabrication: "Leather",
-      colour: ColourEnum.Brown,
-      brandId: "1",
-      details: ["Ankle boot", "Lace-up design", "Leather upper", "Rubber sole"],
+      colour: ColourEnum.Tan,
+      brandId: "3",
+      details: ["Brogue design", "Wingtip", "Leather upper", "Rubber sole"],
     },
     sizes: ["7", "8", "9", "10", "11"],
-    categories: ["Shoes"],
+    collection: CollectionsEnum.SHOES,
+    categories: ["1"], // Boots
+  },
+  {
+    id: "13",
+    name: "Summer Sandals",
+    price: 200,
+    priceAfterDiscount: 200,
+    stockRemaining: 15,
+    images: [Sandals01.src, Sandals02.src, Sandals03.src, Sandals04.src, Sandals05.src],
+    metadata: {
+      fabrication: "Leather",
+      colour: ColourEnum.White,
+      brandId: "2",
+      details: ["Comfort fit", "Breathable material"],
+    },
+    sizes: ["7", "8", "9", "10", "11"],
+    collection: CollectionsEnum.SHOES,
+    categories: ["3"], // Sandals
   },
   {
     id: "2",
@@ -103,23 +123,26 @@ export const dummyProductsData: Product[] = [
       details: ["Premium leather", "Lace-up design", "Comfort sole"],
     },
     sizes: ["7", "8", "9", "10", "11", "12"],
-    categories: ["Shoes"],
+    collection: CollectionsEnum.SHOES,
+    categories: ["1"], // Boots
   },
+
   {
-    id: "3",
-    name: "Grayson Brogue",
-    price: 750,
-    priceAfterDiscount: 500,
-    stockRemaining: 4,
-    images: [Boots02.src, MainItem3.src, MainItem5.src, MainItem2.src, MainItem1.src],
+    id: "9",
+    name: "All-Terrain Hiking Poles",
+    price: 600,
+    priceAfterDiscount: 600,
+    stockRemaining: 18,
+    images: [Pole01.src, Pole02.src, Pole03.src, Pole04.src, Pole05.src],
     metadata: {
-      fabrication: "Leather",
-      colour: ColourEnum.Tan,
-      brandId: "3",
-      details: ["Brogue design", "Wingtip", "Leather upper", "Rubber sole"],
+      fabrication: "Metal",
+      colour: ColourEnum.Blue,
+      brandId: "4",
+      details: ["Durable", "Lightweight"],
     },
-    sizes: ["7", "8", "9", "10", "11"],
-    categories: ["Shoes"],
+    sizes: ["One Size"],
+    collection: CollectionsEnum.EQUIPMENT,
+    categories: ["7"], // Hiking
   },
   {
     id: "4",
@@ -135,7 +158,8 @@ export const dummyProductsData: Product[] = [
       details: ["Waterproof", "Lace-up design", "Rubber sole"],
     },
     sizes: ["7", "8", "9", "10", "11", "12"],
-    categories: ["Shoes"],
+    collection: CollectionsEnum.SHOES,
+    categories: ["1"], // Boots
   },
   {
     id: "5",
@@ -151,7 +175,8 @@ export const dummyProductsData: Product[] = [
       details: ["Hiking boot", "Ankle support", "Rubber sole"],
     },
     sizes: ["7", "8", "9", "10", "11"],
-    categories: ["Shoes"],
+    collection: CollectionsEnum.SHOES,
+    categories: ["1", "6"], // Boots and Camping
   },
   {
     id: "6",
@@ -167,7 +192,8 @@ export const dummyProductsData: Product[] = [
       details: ["Hiking boot", "Speed laces", "Lace-up design", "Rubber sole"],
     },
     sizes: ["7", "8", "9", "10", "11"],
-    categories: ["Shoes"],
+    collection: CollectionsEnum.SHOES,
+    categories: ["1"], // Boots
   },
   {
     id: "7",
@@ -183,13 +209,14 @@ export const dummyProductsData: Product[] = [
       details: ["Comfort fit", "Breathable material"],
     },
     sizes: ["S", "M", "L", "XL"],
-    categories: ["Apparels"],
+    collection: CollectionsEnum.APPARELS,
+    categories: ["4"], // Linen
   },
   {
     id: "8",
     name: "Polyester Joggers",
     price: 350,
-    priceAfterDiscount: 250,
+    priceAfterDiscount: 350,
     stockRemaining: 20,
     images: [Joggers01.src, Joggers02.src, Joggers03.src, Joggers04.src, Joggers05.src],
     metadata: {
@@ -199,30 +226,32 @@ export const dummyProductsData: Product[] = [
       details: ["Slim fit", "Lightweight"],
     },
     sizes: ["S", "M", "L", "XL"],
-    categories: ["Apparels"],
+    collection: CollectionsEnum.APPARELS,
+    categories: ["5"], // Joggers
   },
   {
-    id: "9",
-    name: "All-Terrain Hiking Poles",
-    price: 600,
-    priceAfterDiscount: 600,
-    stockRemaining: 18,
-    images: [Pole01.src, Pole02.src, Pole03.src, Pole04.src, Pole05.src],
+    id: "1",
+    name: "Hargrave Ankle Boot",
+    price: 500,
+    priceAfterDiscount: 500,
+    stockRemaining: 5,
+    images: [MainItem1.src, MainItem2.src, MainItem3.src, MainItem4.src, MainItem5.src],
     metadata: {
-      fabrication: "Metal",
-      colour: ColourEnum.Blue,
-      brandId: "4",
-      details: ["Durable", "Lightweight"],
+      fabrication: "Leather",
+      colour: ColourEnum.Brown,
+      brandId: "1",
+      details: ["Ankle boot", "Lace-up design", "Leather upper", "Rubber sole"],
     },
-    sizes: ["One Size"],
-    categories: ["Equipment"],
+    sizes: ["7", "8", "9", "10", "11"],
+    collection: CollectionsEnum.SHOES,
+    categories: ["1"], // Boots
   },
   {
     id: "10",
     name: "Compact Camping Stove",
     price: 500,
-    priceAfterDiscount: 350,
-    stockRemaining: 25,
+    priceAfterDiscount: 500,
+    stockRemaining: 3,
     images: [Stove01.src, Stove02.src, Stove03.src, Stove04.src, Stove05.src],
     metadata: {
       fabrication: "Stainless Steel",
@@ -231,7 +260,8 @@ export const dummyProductsData: Product[] = [
       details: ["Portable", "Easy to use"],
     },
     sizes: ["One Size"],
-    categories: ["Equipment"],
+    collection: CollectionsEnum.EQUIPMENT,
+    categories: ["6"], // Camping
   },
   {
     id: "11",
@@ -247,7 +277,8 @@ export const dummyProductsData: Product[] = [
       details: ["Assorted items", "Festive packaging"],
     },
     sizes: ["One Size"],
-    categories: ["Gift"],
+    collection: CollectionsEnum.GIFT,
+    categories: ["8"], // Holiday
   },
   {
     id: "12",
@@ -263,6 +294,24 @@ export const dummyProductsData: Product[] = [
       details: ["Bath salts", "Scented candles", "Essential oils"],
     },
     sizes: ["One Size"],
-    categories: ["Gift"],
+    collection: CollectionsEnum.GIFT,
+    categories: ["9"], // Luxury
+  },
+  {
+    id: "14",
+    name: "Beach Sandals",
+    price: 150,
+    priceAfterDiscount: 120,
+    stockRemaining: 10,
+    images: [FlipFlop01.src, FlipFlop02.src, FlipFlop03.src, FlipFlop04.src, FlipFlop05.src],
+    metadata: {
+      fabrication: "Rubber",
+      colour: ColourEnum.DarkBrown,
+      brandId: "1",
+      details: ["Waterproof", "Durable"],
+    },
+    sizes: ["6", "7", "8", "9", "10", "11"],
+    collection: CollectionsEnum.SHOES,
+    categories: ["3"], // Sandals
   },
 ];

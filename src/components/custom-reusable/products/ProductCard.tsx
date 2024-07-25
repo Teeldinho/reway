@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Product } from "@/lib/types/types-and-schemas";
 import ArrowRightIcon from "../icons/ArrowRightIcon";
-import { formatToRand, getBrandForProduct } from "@/lib/utils";
+import { formatToRand } from "@/lib/utils";
 import { dummyBrandsData } from "@/lib/dummy-data";
 import StoreIcon from "@/components/custom-reusable/icons/StoreIcon";
 import Image from "next/image";
@@ -12,6 +12,7 @@ import { AspectRatio } from "@/components/ui/aspect-ratio";
 import ProductDiscountBadge from "@/components/custom-reusable/products/ProductDiscountBadge";
 import ProductLowStockBadge from "@/components/custom-reusable/products/ProductLowStockBadge";
 import { Suspense } from "react";
+import { getBrandForProduct } from "@/lib/types/product-helpers";
 
 type ProductCardProps = {
   product: Product;
@@ -32,12 +33,12 @@ export default function ProductCard({ product }: ProductCardProps) {
 
         {/* This simulates a suspense fallback for the ProductDiscountBadge component, */}
         {/* That aims to show a message while the discount is being calculated, in case we need data from backend or there is an expensive computation. */}
-        <Suspense fallback={<p className="text--sm">Calculating discount...</p>}>
+        <Suspense fallback={<p className="text-sm">Calculating discount...</p>}>
           <ProductDiscountBadge product={product} className="absolute right-2 top-1" />
         </Suspense>
 
         {/* Similarly, this suspense fallback simulates a loading state for the ProductLowStockBadge component. */}
-        <Suspense fallback={<p className="text--sm">Calculating stock remaining...</p>}>
+        <Suspense fallback={<p className="text-sm">Calculating stock remaining...</p>}>
           <ProductLowStockBadge product={product} className="absolute left-2 bottom-2" />
         </Suspense>
       </CardHeader>
@@ -53,7 +54,7 @@ export default function ProductCard({ product }: ProductCardProps) {
             </div>
 
             {/* Similarly, this suspense fallback simulates a loading state for the brand name. */}
-            <Suspense fallback={<p className="text--sm">Determining brand...</p>}>
+            <Suspense fallback={<p className="text-sm">Determining brand...</p>}>
               <p>{getBrandForProduct(dummyBrandsData, product.metadata.brandId)}</p>
             </Suspense>
           </CardDescription>
@@ -61,7 +62,7 @@ export default function ProductCard({ product }: ProductCardProps) {
 
         <CardFooter className="flex justify-between items-center px-4 pb-1 pt-0">
           {/* Similarly, this suspense fallback simulates a loading state for the price. */}
-          <Suspense fallback={<p className="text--sm">Calculating price...</p>}>
+          <Suspense fallback={<p className="text-sm">Calculating price...</p>}>
             <h4 className="font-suezOne text-primary text-[20px] leading-[26.12px]">{formatToRand(product.price)}</h4>
           </Suspense>
 

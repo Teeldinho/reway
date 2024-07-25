@@ -1,8 +1,9 @@
 import { useMemo } from "react";
 import { dummyBrandsData } from "@/lib/dummy-data";
 import { Product } from "@/lib/types/types-and-schemas";
-import { cn, getBrandForProduct } from "@/lib/utils";
-import { getProductColor } from "../header/desktop/side-nav/forms/helpers/color-helpers";
+import { cn } from "@/lib/utils";
+import { getBrandForProduct } from "@/lib/types/product-helpers";
+import { ColourDisplayName, getProductColor } from "@/lib/types/colour-helpers";
 
 type ProductCardProps = {
   product: Product;
@@ -28,7 +29,7 @@ export default function ProductDetailsMetadata({ product }: ProductCardProps) {
         <span className="flex items-center gap-2">
           <span className={cn(`size-[10px] rounded-full ring-2 ring-black`, productColor ? productColor : "bg-transparent")} />
 
-          <p className="font-ptSans text-black capitalize font-bold">{product.metadata.colour}</p>
+          <p className="font-ptSans text-black capitalize font-bold">{ColourDisplayName[product.metadata.colour]}</p>
         </span>
       </li>
 

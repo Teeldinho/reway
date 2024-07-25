@@ -1,6 +1,5 @@
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
-import { Brand, Product } from "@/lib/types/types-and-schemas";
 import { Option } from "@/components/ui/multi-select";
 
 export function cn(...inputs: ClassValue[]) {
@@ -23,18 +22,6 @@ export const formatToPercentage = (value: number) => {
     maximumFractionDigits: 0,
   }).format(value / 100);
 };
-
-export const getProductsForCategories = (products: Product[], category: string[]) =>
-  products.filter((product) => product.categories.some((productCategory) => category.includes(productCategory)));
-
-export const getProductsForBrand = (products: Product[], brandId: string) => products.filter((product) => product.metadata.brandId === brandId);
-
-export const getBrandForProduct = (brands: Brand[], productBrandId: string) =>
-  brands.find((brand) => brand.id === productBrandId)?.name || "Unknown Brand";
-
-export const getProductPercentageOff = (product: Product) => ((product.price - product.priceAfterDiscount) / product.price) * 100;
-
-export const getProductHasLowStock = (product: Product) => product.stockRemaining < 5;
 
 export function transformToOptions<T>(items: T[], valueKey: keyof T, labelKey: keyof T): Option[] {
   return items.map((item) => ({

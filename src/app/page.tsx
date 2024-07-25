@@ -11,11 +11,11 @@ export default function Home() {
         <ProductCard key={product.id} product={product} />
       ))}
 
-      {/* <ProductDetailsInfo product={dummyProductsData[3]} /> */}
+      {/* <ProductDetailsInfo product={dummyProductsData[5]} /> */}
 
       {/* <ProductOptions product={dummyProductsData[7]} /> */}
 
-      {/* <ProductPreview product={dummyProductsData[5]} /> */}
+      {/* <ProductPreview product={dummyProductsData[0]} /> */}
     </div>
   );
 }

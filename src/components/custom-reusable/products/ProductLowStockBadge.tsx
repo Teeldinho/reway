@@ -3,8 +3,9 @@
 import { useMemo } from "react";
 import { Badge, BadgeProps } from "@/components/ui/badge";
 import { Product } from "@/lib/types/types-and-schemas";
-import { cn, getProductHasLowStock } from "@/lib/utils";
+import { cn } from "@/lib/utils";
 import { Tag } from "lucide-react";
+import { getProductHasLowStock } from "@/lib/types/product-helpers";
 
 type ProductLowStockBadgeProps = BadgeProps & {
   product: Product;

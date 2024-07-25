@@ -1,6 +1,6 @@
-import { ColourEnum } from "@/components/custom-reusable/header/desktop/side-nav/forms/helpers/color-helpers";
-import { NavLinks } from "@/components/custom-reusable/header/navLinks";
 import { z } from "zod";
+import { CollectionsEnum } from "@/lib/types/product-helpers";
+import { ColourEnum } from "@/lib/types/colour-helpers";
 
 export const MailListFormSchema = z.object({
   email: z
@@ -30,8 +30,13 @@ export const SearchAndFilterFormSchema = z.object({
 
 export type SearchAndFilterFormSchemaType = z.infer<typeof SearchAndFilterFormSchema>;
 
-// Extract titles from NavLinks to maintain a 1-to-1 relationship with the categories:
-const categoryTitles = NavLinks.map((navLink) => navLink.title) as unknown as [string, ...string[]];
+export const CategorySchema = z.object({
+  id: z.string(),
+  name: z.string(),
+  collection: z.nativeEnum(CollectionsEnum),
+});
+
+export type Category = z.infer<typeof CategorySchema>;
 
 export const ProductSchema = z.object({
   id: z.string(),
@@ -47,7 +52,8 @@ export const ProductSchema = z.object({
     details: z.array(z.string()),
   }),
   sizes: z.array(z.string()),
-  categories: z.array(z.enum(categoryTitles)),
+  collection: z.nativeEnum(CollectionsEnum),
+  categories: z.array(CategorySchema.shape.id),
 });
 
 export type Product = z.infer<typeof ProductSchema>;

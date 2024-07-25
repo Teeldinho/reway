@@ -8,11 +8,11 @@ import { toast } from "sonner";
 import { SearchAndFilterFormSchema, SearchAndFilterFormSchemaType } from "@/lib/types/types-and-schemas";
 import SearchIcon from "@/components/custom-reusable/icons/SearchIcon";
 import { dummyBrandsData } from "@/lib/dummy-data";
-import { ColourEnum } from "./helpers/color-helpers";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Slider } from "@/components/ui/slider";
 import MultipleSelector, { Option } from "@/components/ui/multi-select";
 import { transformToOptions } from "@/lib/utils";
+import { ColourEnum } from "@/lib/types/colour-helpers";
 
 export function SearchAndFilterForm() {
   const form = useForm<SearchAndFilterFormSchemaType>({
@@ -79,7 +79,7 @@ export function SearchAndFilterForm() {
                   ))}
                 </SelectContent>
               </Select>
-              <FormMessage>{form.formState.errors.color?.message}</FormMessage>
+              <FormMessage />
             </FormItem>
           )}
         />
