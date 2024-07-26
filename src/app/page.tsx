@@ -1,7 +1,4 @@
 import ProductCard from "@/components/custom-reusable/products/ProductCard";
-import ProductDetailsInfo from "@/components/custom-reusable/products/ProductDetailsInfo";
-import ProductOptions from "@/components/custom-reusable/products/ProductOptions";
-import ProductPreview from "@/components/custom-reusable/products/ProductPreview";
 import { Separator } from "@/components/ui/separator";
 import { dummyProductsData } from "@/lib/dummy-data";
 import { CollectionDisplayName, generateSlug } from "@/lib/types/product-helpers";
@@ -22,12 +19,6 @@ export default function Home() {
           </Link>
         ))}
       </div>
-
-      {/* <ProductDetailsInfo product={dummyProductsData[5]} /> */}
-
-      {/* <ProductOptions product={dummyProductsData[7]} /> */}
-
-      {/* <ProductPreview product={dummyProductsData[0]} /> */}
     </div>
   );
 }

@@ -8,8 +8,6 @@ import { NavLinks } from "../../navLinks";
 export default function DesktopNavMainLinks() {
   const pathname = usePathname();
 
-  console.log("DesktopNavMainLinks -> pathname", pathname);
-
   return (
     <ul className="flex items-center gap-8">
       {NavLinks.map((link) => (

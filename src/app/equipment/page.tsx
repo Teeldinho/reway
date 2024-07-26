@@ -1,3 +1,4 @@
+import CollectionHeading from "@/components/custom-reusable/products/CollectionHeading";
 import ProductCard from "@/components/custom-reusable/products/ProductCard";
 import { Separator } from "@/components/ui/separator";
 import { dummyProductsData } from "@/lib/dummy-data";
@@ -11,10 +12,7 @@ export default function Equipment() {
   return (
     <div className="flex-1 flex flex-col gap-8">
       <div className="w-full space-y-8">
-        <div className="space-y-1">
-          <p className="text-sm text-primary font-ptSans font-semibold tracking-widest">Collection</p>
-          <h1 className="font-suezOne text-3xl uppercase">{CollectionDisplayName[collectionId]}</h1>
-        </div>
+        <CollectionHeading collectionId={collectionId} />
 
         <Separator className="w-full" />
       </div>

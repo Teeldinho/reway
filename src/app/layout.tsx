@@ -10,6 +10,7 @@ import Header from "@/components/custom-reusable/header/Header";
 import SideNav from "@/components/custom-reusable/header/desktop/side-nav/SideNav";
 import TopBanner from "@/components/custom-reusable/header/TopBanner";
 import { Toaster } from "@/components/ui/sonner";
+import CustomBreadcrumbs from "@/components/custom-reusable/CustomBreadcrumbs";
 
 const suezOne = Suez_One({
   subsets: ["latin"],
@@ -44,8 +45,10 @@ export default function RootLayout({
 
             <div className="min-h-full flex-1 flex flex-col px-8 gap-8">
               <TopBanner />
-              <Card className="border-none p-0 flex flex-col gap-8">
-                <CardHeader className="z-20 p-0 w-full">Breadcrumbs</CardHeader>
+              <Card className="border-none p-0 flex flex-col gap-4">
+                <CardHeader className="z-20 p-0 w-full">
+                  <CustomBreadcrumbs />
+                </CardHeader>
                 <CardContent className="flex-1 overflow-y-auto p-0 pb-8 lg:pb-4">{children}</CardContent>
               </Card>
             </div>
