@@ -43,3 +43,7 @@ export const getProductHasLowStock = (product: Product) => product.stockRemainin
 export function getCategoryById(categories: Category[], id: string) {
   return categories.find((category) => category.id === id);
 }
+
+export function getProductsInSameCategory(product: Product, allProducts: Product[]) {
+  return allProducts.filter((p) => p.id !== product.id).filter((p) => p.categories.some((category) => product.categories.includes(category)));
+}

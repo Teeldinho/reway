@@ -176,7 +176,7 @@ export const dummyProductsData: Product[] = [
     },
     sizes: ["7", "8", "9", "10", "11"],
     collection: CollectionsEnum.SHOES,
-    categories: ["1", "6"], // Boots and Camping
+    categories: ["6"], // Camping
   },
   {
     id: "6",

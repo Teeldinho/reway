@@ -17,7 +17,7 @@ export default function ProductDetailsInfoCard({ product }: ProductCardProps) {
   const brand = useMemo(() => getBrandForProduct(dummyBrandsData, product.metadata.brandId), [product]);
 
   return (
-    <Card className="border-[6px] border-primary max-w-[355px] md:min-w-[355px] w-full">
+    <Card className="border-[6px] border-primary max-w-[355px] min-w-full">
       <CardHeader className="p-5">
         <CardTitle className="p-0 font-suezOne text-[20px] leading-[26.12px] text-black uppercase font-normal">{product.name}</CardTitle>
         <CardDescription className="font-ptSans font-bold flex items-center gap-3 text-rewayLightGrey">

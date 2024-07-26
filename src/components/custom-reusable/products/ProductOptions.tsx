@@ -8,7 +8,7 @@ type ProductCardProps = {
 
 export default function ProductOptions({ product }: ProductCardProps) {
   return (
-    <Card className="max-w-[355px] md:min-w-[355px] w-full pt-4 bg-rewayLightGrey">
+    <Card className="max-w-[355px] min-w-full pt-4 bg-rewayLightGrey">
       <CardContent className="flex flex-col gap-4">
         <ProductOptionsForm product={product} />
       </CardContent>

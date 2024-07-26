@@ -33,7 +33,7 @@ export default function ProductPreview({ product }: ProductCardProps) {
 
   return (
     <Dialog>
-      <div className="flex flex-col gap-4 w-full max-w-xl">
+      <div className="flex flex-col gap-4 w-full min-w-full">
         <Carousel
           setApi={setApi}
           className="min-w-full relative"
@@ -48,7 +48,7 @@ export default function ProductPreview({ product }: ProductCardProps) {
                   <CarouselItem className="group hover:cursor-zoom-in">
                     <Card className="min-w-full overflow-hidden bg-rewayLightGrey">
                       <CardContent className="p-0">
-                        <AspectRatio ratio={2 / 3} className="relative h-full overflow-hidden">
+                        <AspectRatio ratio={16 / 12} className="relative h-full overflow-hidden">
                           <Image
                             src={p}
                             alt={`${product.name}-image`}
