@@ -25,6 +25,7 @@ const config = {
         rewayBlack: "hsl(var(--reway-black))",
         rewayGrey: "hsl(var(--reway-grey))",
         rewayLightGrey: "hsl(var(--reway-light-grey))",
+        rewayDarkGrey: "hsl(var(--reway-dark-grey))",
         rewayWhite: "hsl(var(--reway-white))",
         // end custom colors
         primary: {

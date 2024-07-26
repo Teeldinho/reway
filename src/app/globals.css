@@ -35,6 +35,7 @@
     --reway-black: 0 0% 7%;
     --reway-grey: 0 0% 51%;
     --reway-light-grey: 0 0% 92%;
+    --reway-dark-grey: 0 0% 29%;
     --reway-white: 0 0% 100%;
   }
 
@@ -69,6 +70,7 @@
     --reway-black: 0 0% 7%;
     --reway-grey: 0 0% 51%;
     --reway-light-grey: 0 0% 92%;
+    --reway-dark-grey: 0 0% 29%;
     --reway-white: 0 0% 100%;
   }
 }

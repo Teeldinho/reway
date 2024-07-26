@@ -11,6 +11,7 @@ import SideNav from "@/components/custom-reusable/header/desktop/side-nav/SideNa
 import TopBanner from "@/components/custom-reusable/header/TopBanner";
 import { Toaster } from "@/components/ui/sonner";
 import CustomBreadcrumbs from "@/components/custom-reusable/CustomBreadcrumbs";
+import Footer from "@/components/custom-reusable/footer/Footer";
 
 const suezOne = Suez_One({
   subsets: ["latin"],
@@ -37,7 +38,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={cn("min-h-screen w-screen bg-background font-ptSans antialiased text-rewayBlack", ptSans.variable, suezOne.variable)}>
-        <section className="h-screen w-full flex flex-col gap-8 overflow-hidden">
+        <section className="w-full flex flex-col gap-8 overflow-hidden">
           <Header />
 
           <div className="flex gap-2 flex-1 overflow-x-hidden overflow-y-auto">
@@ -53,6 +54,8 @@ export default function RootLayout({
               </Card>
             </div>
           </div>
+
+          <Footer />
         </section>
 
         <Toaster />
