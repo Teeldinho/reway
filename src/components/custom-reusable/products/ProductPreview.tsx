@@ -8,8 +8,9 @@ import Image from "next/image";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import ProductPreviewThumbnail from "./ProductPreviewThumbnail";
 import ProductPreviewEnlargedImage from "./ProductPreviewEnlargedImage";
-import ProductDiscountBadge from "./ProductDiscountBadge";
 import { Product } from "@/lib/types/shop-schemas";
+import ProductDiscountBadge from "@/components/custom-reusable/products/ProductDiscountBadge";
+import ProductLowStockBadge from "@/components/custom-reusable/products/ProductLowStockBadge";
 
 type ProductCardProps = {
   product: Product;
@@ -65,6 +66,7 @@ export default function ProductPreview({ product }: ProductCardProps) {
           </CarouselContent>
 
           <ProductDiscountBadge product={product} className="absolute top-4 right-4" />
+          <ProductLowStockBadge product={product} className="absolute bottom-4 left-4" />
 
           <CarouselPrevious className="absolute left-4 top-[50%] bottom-[50%] border-none bg-primary ring-2 ring-white text-white hover:bg-primary/70" />
           <CarouselNext className="absolute right-4 top-[50%] bottom-[50%] border-none bg-primary ring-2 ring-white text-white hover:bg-primary/70" />

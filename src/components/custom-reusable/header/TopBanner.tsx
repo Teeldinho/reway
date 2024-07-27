@@ -1,8 +1,11 @@
+"use client";
 import Image from "next/image";
 import TopBannerIMG from "../../../../public/assets/Top Banner.png";
 import { Button } from "@/components/ui/button";
+import { useRouter } from "next/navigation";
 
 export default function TopBanner() {
+  const router = useRouter();
   return (
     <div className="relative w-full min-h-[90px] lg:max-h-[90px] rounded-[2px]">
       <Image src={TopBannerIMG} alt="Top Banner" fill className="object-fill" />
@@ -15,7 +18,8 @@ export default function TopBanner() {
 
         <Button
           variant={"outline"}
-          className="md:absolute md:top-6 md:right-[10%] lg:right-[30%] max-w-fit text-white border-white hover:bg-white/20"
+          className="md:absolute md:top-6 md:right-[10%] lg:right-[30%] max-w-fit text-white border-white hover:bg-white/20 animate-pulse duration-1000 transition-transform"
+          onClick={() => router.push("/sale")}
         >
           Shop Now
         </Button>

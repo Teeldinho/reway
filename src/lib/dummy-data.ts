@@ -233,7 +233,7 @@ export const dummyProductsData: Product[] = [
     id: "1",
     name: "Hargrave Ankle Boot",
     price: 500,
-    priceAfterDiscount: 500,
+    priceAfterDiscount: 250,
     stockRemaining: 5,
     images: [MainItem1.src, MainItem2.src, MainItem3.src, MainItem4.src, MainItem5.src],
     metadata: {
@@ -301,7 +301,7 @@ export const dummyProductsData: Product[] = [
     id: "14",
     name: "Beach Sandals",
     price: 150,
-    priceAfterDiscount: 120,
+    priceAfterDiscount: 60,
     stockRemaining: 10,
     images: [FlipFlop01.src, FlipFlop02.src, FlipFlop03.src, FlipFlop04.src, FlipFlop05.src],
     metadata: {
