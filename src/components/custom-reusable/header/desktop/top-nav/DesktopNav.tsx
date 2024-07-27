@@ -6,7 +6,7 @@ import BrandLogo from "../../BrandLogo";
 
 export default function DesktopNav() {
   return (
-    <nav className="hidden w-full md:flex md:flex-row md:items-center md:justify-between bg-white h-[92px] px-8">
+    <nav className="hidden w-full lg:flex md:flex-row md:items-center md:justify-between bg-white h-[92px] px-8">
       <div className="flex items-center gap-12">
         {/* Logo */}
         <Link href={"/"}>

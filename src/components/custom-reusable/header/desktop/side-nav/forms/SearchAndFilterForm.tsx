@@ -1,7 +1,9 @@
+// src/app/SearchAndFilterForm.tsx
+
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { toast } from "sonner";
@@ -10,9 +12,11 @@ import SearchIcon from "@/components/custom-reusable/icons/SearchIcon";
 import { dummyBrandsData } from "@/lib/dummy-data";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Slider } from "@/components/ui/slider";
-import MultipleSelector, { Option } from "@/components/ui/multi-select";
-import { transformToOptions } from "@/lib/utils";
+import { Option, transformToOptions } from "@/lib/utils";
 import { ColourEnum } from "@/lib/types/colour-helpers";
+import { MultiSelect } from "@/components/ui/multi-select";
+
+const transformedBrands: Option[] = transformToOptions(dummyBrandsData, "id", "name");
 
 export function SearchAndFilterForm() {
   const form = useForm<SearchAndFilterFormSchemaType>({
@@ -23,8 +27,6 @@ export function SearchAndFilterForm() {
       pricingRange: 750,
     },
   });
-
-  const transformedBrands: Option[] = transformToOptions(dummyBrandsData, "id", "name");
 
   function onSubmit(data: SearchAndFilterFormSchemaType) {
     toast.success(`Filters to be applied are: ${JSON.stringify(data, null, 2)}`, {
@@ -38,25 +40,29 @@ export function SearchAndFilterForm() {
         <FormField
           control={form.control}
           name="brands"
-          render={({ field }) => {
-            const transformedValue: Option[] = transformToOptions(field.value, "id", "name");
-
-            return (
-              <FormItem>
-                <FormLabel className="text-rewayGrey font-semibold uppercase">Brand</FormLabel>
-                <FormControl>
-                  <MultipleSelector
-                    {...field}
-                    value={transformedValue as Option[]}
-                    defaultOptions={transformToOptions(transformedBrands, "id", "name") as Option[]}
-                    placeholder=""
-                    emptyIndicator={<p className="text-center text-lg leading-10 text-foreground">no results found.</p>}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            );
-          }}
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel className="text-rewayGrey font-semibold uppercase">Brand</FormLabel>
+              <FormControl>
+                <Controller
+                  name="brands"
+                  control={form.control}
+                  render={({ field }) => (
+                    <MultiSelect
+                      options={transformedBrands}
+                      onValueChange={(value: string[]) => {
+                        const selectedBrands = dummyBrandsData.filter((brand) => value.includes(brand.id));
+                        field.onChange(selectedBrands);
+                      }}
+                      defaultValue={field.value.map((item) => item.id)}
+                      placeholder="Select brands"
+                    />
+                  )}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
         />
 
         <FormField
@@ -65,13 +71,16 @@ export function SearchAndFilterForm() {
           render={({ field }) => (
             <FormItem>
               <FormLabel className="text-rewayGrey font-semibold uppercase">Colour</FormLabel>
-              <Select onValueChange={field.onChange} value={field.value || ""}>
+              <Select onValueChange={(value) => field.onChange(value === "none" ? null : value)} value={field.value || "none"}>
                 <FormControl className="text-rewayGrey uppercase">
                   <SelectTrigger>
                     <SelectValue placeholder="Select colour" />
                   </SelectTrigger>
                 </FormControl>
                 <SelectContent>
+                  <SelectItem key="none" value="none">
+                    All Colors
+                  </SelectItem>
                   {Object.values(ColourEnum).map((colour) => (
                     <SelectItem key={colour} value={colour}>
                       {colour}

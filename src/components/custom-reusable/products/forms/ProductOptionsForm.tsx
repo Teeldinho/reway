@@ -23,7 +23,7 @@ export default function ProductOptionsForm({ product }: ProductCardProps) {
   });
 
   function onSubmit(data: ProductOptionsType) {
-    toast.success(`Product: ${product.name} / Data: ${JSON.stringify(data, null, 2)}`, {
+    toast.success(`Product: ${product.name} / Options: ${JSON.stringify(data, null, 2)}`, {
       description: `Ideally, this is when we submit the validated form data to the backend to add the product to the cart.
       `,
     });

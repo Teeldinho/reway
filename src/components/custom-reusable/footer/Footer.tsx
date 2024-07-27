@@ -5,7 +5,7 @@ import InstagramIcon from "@/components/custom-reusable/icons/InstagramIcon";
 
 export default function Footer() {
   return (
-    <footer className="w-full py-16 bg-rewayDarkGrey text-rewayWhite">
+    <footer className="w-full py-8 md:py-16 bg-rewayDarkGrey text-rewayWhite">
       <div className="container grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
         {/* Account */}
         <div>

@@ -44,7 +44,7 @@ export default function RootLayout({
           <div className="flex gap-2 flex-1 overflow-x-hidden overflow-y-auto">
             <SideNav />
 
-            <div className="min-h-full flex-1 flex flex-col px-8 gap-8">
+            <div className="min-h-full flex-1 flex flex-col px-4 lg:px-8 gap-8">
               <TopBanner />
               <Card className="border-none p-0 flex flex-col gap-4">
                 <CardHeader className="z-20 p-0 w-full">

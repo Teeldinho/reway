@@ -17,14 +17,14 @@ export default function ProductDetailsPage({ product }: ProductDetailsInfoCardPr
   return (
     <div className="flex flex-col gap-20 pb-16">
       {/* Product Details Section */}
-      <section className="w-full flex gap-8">
+      <section className="w-full flex flex-col md:flex-row gap-8">
         {/* Product Images Carousel */}
-        <div className="w-[65%] p-1">
+        <div className="w-full md:w-[50%] lg:w-[65%] p-1">
           <ProductPreview product={product} />
         </div>
 
         {/* Product Details and Option Configurator */}
-        <div className="flex flex-col gap-4 w-[35%]">
+        <div className="flex flex-col gap-4 w-full md:w-[50%] lg:w-[35%]">
           <ProductDetailsInfoCard product={product} />
           <ProductOptions product={product} />
         </div>

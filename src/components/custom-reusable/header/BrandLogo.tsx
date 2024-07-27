@@ -8,7 +8,7 @@ type LogoProps = {
 
 export default function BrandLogo({ className }: LogoProps) {
   return (
-    <div className={cn("h-[44.81px] w-[163.69px] relative", className)}>
+    <div className={cn("lg:h-[44.81px] lg:w-[163.69px] h-8 w-20 md:h-12 md:w-28 relative", className)}>
       <Image src={LogoIMG} alt="Logo" fill />
     </div>
   );
