@@ -1,6 +1,5 @@
 "use client";
 
-import { Product } from "@/lib/types/types-and-schemas";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious, type CarouselApi } from "@/components/ui/carousel";
 import { Fragment, useEffect, useState } from "react";
@@ -10,6 +9,7 @@ import { AspectRatio } from "@/components/ui/aspect-ratio";
 import ProductPreviewThumbnail from "./ProductPreviewThumbnail";
 import ProductPreviewEnlargedImage from "./ProductPreviewEnlargedImage";
 import ProductDiscountBadge from "./ProductDiscountBadge";
+import { Product } from "@/lib/types/shop-schemas";
 
 type ProductCardProps = {
   product: Product;
@@ -70,7 +70,7 @@ export default function ProductPreview({ product }: ProductCardProps) {
           <CarouselNext className="absolute right-4 top-[50%] bottom-[50%] border-none bg-primary ring-2 ring-white text-white hover:bg-primary/70" />
         </Carousel>
 
-        <div className="w-full grid grid-cols-4 gap-4">
+        <div className="w-full grid grid-cols-4 gap-3 md:gap-4">
           {product.images.map((p, index) => (
             <ProductPreviewThumbnail
               key={index}

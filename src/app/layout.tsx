@@ -12,6 +12,8 @@ import TopBanner from "@/components/custom-reusable/header/TopBanner";
 import { Toaster } from "@/components/ui/sonner";
 import CustomBreadcrumbs from "@/components/custom-reusable/CustomBreadcrumbs";
 import Footer from "@/components/custom-reusable/footer/Footer";
+import MailListPrompt from "@/components/custom-reusable/header/desktop/side-nav/MailListPrompt";
+import SideBanner from "@/components/custom-reusable/header/desktop/side-nav/SideBanner";
 
 const suezOne = Suez_One({
   subsets: ["latin"],
@@ -55,10 +57,14 @@ export default function RootLayout({
             </div>
           </div>
 
+          <div className="lg:hidden px-2 pb-2 space-y-8 mx-auto">
+            <SideBanner />
+            <MailListPrompt />
+          </div>
           <Footer />
         </section>
 
-        <Toaster />
+        <Toaster position="top-center" richColors />
       </body>
     </html>
   );

@@ -9,7 +9,7 @@ import MobileNavLink from "@/components/custom-reusable/header/mobile/MobileNavL
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { NavLinks } from "../navLinks";
 import DesktopNavIconLinks from "../desktop/top-nav/DesktopNavIconLinks";
-import DesktopNavAuth from "../desktop/top-nav/DesktopNavAuth";
+import DesktopNavAuth from "../../auth/AuthTriggerButtons";
 
 export default function MobileNav() {
   const [open, setOpen] = useState(false);

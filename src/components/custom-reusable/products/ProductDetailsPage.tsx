@@ -1,4 +1,3 @@
-import { Product } from "@/lib/types/types-and-schemas";
 import ProductPreview from "@/components/custom-reusable/products/ProductPreview";
 import ProductDetailsInfoCard from "./ProductDetailsInfo";
 import ProductOptions from "./ProductOptions";
@@ -6,6 +5,7 @@ import { getCategoryById, getProductsInSameCategory } from "@/lib/types/product-
 import { dummyCategoriesData, dummyProductsData } from "@/lib/dummy-data";
 import { Separator } from "@/components/ui/separator";
 import ProductsInCategory from "./ProductsInCategory";
+import { Product } from "@/lib/types/shop-schemas";
 
 type ProductDetailsInfoCardProps = {
   product: Product;

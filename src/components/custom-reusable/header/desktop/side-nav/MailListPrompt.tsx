@@ -29,7 +29,7 @@ export default function MailListPrompt() {
 
       <Button
         variant={"ghost"}
-        className="absolute h-[13px] w-[10px] top-3 right-3 flex items-center hover:bg-transparent group"
+        className="hidden absolute h-[13px] w-[10px] top-3 right-3 md:flex items-center hover:bg-transparent group"
         size={"icon"}
         onClick={handleHide}
       >

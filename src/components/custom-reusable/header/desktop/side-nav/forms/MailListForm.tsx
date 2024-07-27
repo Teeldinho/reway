@@ -38,7 +38,7 @@ export function MailListForm() {
               <FormControl>
                 <Input placeholder="ENTER EMAIL ADDRESS" {...field} className="bg-white text-rewayGrey" />
               </FormControl>
-              <FormMessage className="text-red-400 font-semibold tracking-wider" />
+              <FormMessage className="text-border font-semibold tracking-wider" />
             </FormItem>
           )}
         />

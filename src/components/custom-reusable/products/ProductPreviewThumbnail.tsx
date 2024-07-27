@@ -3,9 +3,9 @@
 import { MouseEventHandler } from "react";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Card, CardContent } from "@/components/ui/card";
-import { Product } from "@/lib/types/types-and-schemas";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
+import { Product } from "@/lib/types/shop-schemas";
 
 type ProductPreviewThumbnailProps = {
   selected: boolean;

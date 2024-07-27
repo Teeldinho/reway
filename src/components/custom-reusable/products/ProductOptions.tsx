@@ -1,6 +1,6 @@
-import { Product } from "@/lib/types/types-and-schemas";
 import { Card, CardContent } from "@/components/ui/card";
 import ProductOptionsForm from "./forms/ProductOptionsForm";
+import { Product } from "@/lib/types/shop-schemas";
 
 type ProductCardProps = {
   product: Product;

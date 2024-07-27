@@ -1,4 +1,4 @@
-import { Product } from "@/lib/types/types-and-schemas";
+import { Product } from "@/lib/types/shop-schemas";
 import { Dot } from "lucide-react";
 
 type ProductCardProps = {

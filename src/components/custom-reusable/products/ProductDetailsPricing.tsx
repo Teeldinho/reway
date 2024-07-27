@@ -1,6 +1,6 @@
-import { Product } from "@/lib/types/types-and-schemas";
 import { formatToRand } from "@/lib/utils";
 import ProductDiscountBadge from "./ProductDiscountBadge";
+import { Product } from "@/lib/types/shop-schemas";
 
 type ProductCardProps = {
   product: Product;

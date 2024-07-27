@@ -1,4 +1,4 @@
-import { Brand, Category, Product } from "@/lib/types/types-and-schemas";
+import { Brand, Category, Product } from "@/lib/types/shop-schemas";
 
 export enum CollectionsEnum {
   APPARELS = "Apparels",

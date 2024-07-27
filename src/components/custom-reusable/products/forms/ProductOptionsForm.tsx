@@ -1,6 +1,5 @@
 "use client";
 
-import { Product, ProductOptionsSchema, ProductOptionsType } from "@/lib/types/types-and-schemas";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
@@ -8,6 +7,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { toast } from "sonner";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { ShoppingCart } from "lucide-react";
+import { Product, ProductOptionsSchema, ProductOptionsType } from "@/lib/types/shop-schemas";
 
 type ProductCardProps = {
   product: Product;

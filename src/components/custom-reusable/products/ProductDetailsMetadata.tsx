@@ -1,9 +1,9 @@
 import { useMemo } from "react";
 import { dummyBrandsData } from "@/lib/dummy-data";
-import { Product } from "@/lib/types/types-and-schemas";
 import { cn } from "@/lib/utils";
 import { getBrandForProduct } from "@/lib/types/product-helpers";
 import { ColourDisplayName, getProductColor } from "@/lib/types/colour-helpers";
+import { Product } from "@/lib/types/shop-schemas";
 
 type ProductCardProps = {
   product: Product;

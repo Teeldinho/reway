@@ -1,5 +1,4 @@
 import { useMemo } from "react";
-import { Product } from "@/lib/types/types-and-schemas";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { dummyBrandsData } from "@/lib/dummy-data";
 import { Store } from "lucide-react";
@@ -8,6 +7,7 @@ import ProductDetailsList from "@/components/custom-reusable/products/ProductDet
 import ProductDetailsPricing from "@/components/custom-reusable/products/ProductDetailsPricing";
 import ProductDetailsMetadata from "@/components/custom-reusable/products/ProductDetailsMetadata";
 import { getBrandForProduct } from "@/lib/types/product-helpers";
+import { Product } from "@/lib/types/shop-schemas";
 
 type ProductCardProps = {
   product: Product;

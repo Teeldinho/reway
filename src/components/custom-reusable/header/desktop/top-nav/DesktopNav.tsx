@@ -1,8 +1,8 @@
 import Link from "next/link";
-import DesktopNavAuth from "@/components/custom-reusable/header/desktop/top-nav/DesktopNavAuth";
 import DesktopNavMainLinks from "@/components/custom-reusable/header/desktop/top-nav/DesktopNavMainLinks";
 import DesktopNavIconLinks from "@/components/custom-reusable/header/desktop/top-nav/DesktopNavIconLinks";
 import BrandLogo from "../../BrandLogo";
+import AuthTriggerButtons from "@/components/custom-reusable/auth/AuthTriggerButtons";
 
 export default function DesktopNav() {
   return (
@@ -22,7 +22,7 @@ export default function DesktopNav() {
         <DesktopNavIconLinks />
 
         {/* Auth */}
-        <DesktopNavAuth />
+        <AuthTriggerButtons />
       </div>
     </nav>
   );

@@ -1,4 +1,3 @@
-import { Brand, Category, Product } from "@/lib/types/types-and-schemas";
 import { CollectionsEnum } from "@/lib/types/product-helpers";
 
 import {
@@ -54,6 +53,7 @@ import {
   FlipFlop05,
 } from "@/lib/product-assets";
 import { ColourEnum } from "./types/colour-helpers";
+import { Brand, Category, Product } from "@/lib/types/shop-schemas";
 
 export const dummyBrandsData: Brand[] = [
   { id: "1", name: "Superbalist", description: "Description for Superbalist brand." },

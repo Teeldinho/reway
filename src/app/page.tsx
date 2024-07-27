@@ -1,7 +1,7 @@
 import ProductCard from "@/components/custom-reusable/products/ProductCard";
 import { Separator } from "@/components/ui/separator";
 import { dummyProductsData } from "@/lib/dummy-data";
-import { CollectionDisplayName, generateSlug } from "@/lib/types/product-helpers";
+import { CollectionDisplayName, CollectionsEnum, generateSlug } from "@/lib/types/product-helpers";
 import Link from "next/link";
 
 export default function Home() {
@@ -14,7 +14,10 @@ export default function Home() {
       </div>
       <div className="flex-1 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 w-full">
         {dummyProductsData.map((product) => (
-          <Link href={`/${generateSlug(CollectionDisplayName[product.collection])}/${generateSlug(product.name)}`} key={product.id}>
+          <Link
+            href={`/${generateSlug(CollectionDisplayName[product.collection as CollectionsEnum])}/${generateSlug(product.name)}`}
+            key={product.id}
+          >
             <ProductCard product={product} />
           </Link>
         ))}

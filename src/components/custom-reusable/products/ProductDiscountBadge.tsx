@@ -2,10 +2,10 @@
 
 import { useMemo } from "react";
 import { Badge, BadgeProps } from "@/components/ui/badge";
-import { Product } from "@/lib/types/types-and-schemas";
 import { cn, formatToPercentage } from "@/lib/utils";
 import { Tag } from "lucide-react";
 import { getProductPercentageOff } from "@/lib/types/product-helpers";
+import { Product } from "@/lib/types/shop-schemas";
 
 type ProductDiscountBadgeProps = BadgeProps & {
   product: Product;

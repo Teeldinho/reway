@@ -2,7 +2,6 @@
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Product } from "@/lib/types/types-and-schemas";
 import ArrowRightIcon from "../icons/ArrowRightIcon";
 import { formatToRand } from "@/lib/utils";
 import { dummyBrandsData } from "@/lib/dummy-data";
@@ -13,7 +12,7 @@ import ProductDiscountBadge from "@/components/custom-reusable/products/ProductD
 import ProductLowStockBadge from "@/components/custom-reusable/products/ProductLowStockBadge";
 import { Suspense } from "react";
 import { getBrandForProduct } from "@/lib/types/product-helpers";
-import Link from "next/link";
+import { Product } from "@/lib/types/shop-schemas";
 
 type ProductCardProps = {
   product: Product;
