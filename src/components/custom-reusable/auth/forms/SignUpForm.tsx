@@ -6,14 +6,17 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
 import { MoveRight } from "lucide-react";
-import { SignInSchema, SignInType, SignUpSchema, SignUpType } from "@/lib/types/auth-schemas";
+import { SignUpSchema, SignUpType } from "@/lib/types/auth-schemas";
 import { Button } from "@/components/ui/button";
+import { useShopStore } from "@/stores/ShopStore";
 
 type SignUpFormProps = {
   onOpenChange: (open: boolean) => void;
 };
 
 export default function SignUpForm({ onOpenChange }: SignUpFormProps) {
+  const signIn = useShopStore((store) => store.signIn);
+
   // Define the form:
   const form = useForm<SignUpType>({
     resolver: zodResolver(SignUpSchema),
@@ -29,6 +32,9 @@ export default function SignUpForm({ onOpenChange }: SignUpFormProps) {
     toast.success(`Welcome, ${JSON.stringify(data, null, 2)}`, {
       description: "This simulates a successful account registration after validating the form. Auth buttons should now be hidden.",
     });
+
+    // Simulate a successful sign up after registration:
+    signIn();
 
     onOpenChange(false);
   }

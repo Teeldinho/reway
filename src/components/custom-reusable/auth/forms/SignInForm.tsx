@@ -8,12 +8,15 @@ import { toast } from "sonner";
 import { MoveRight } from "lucide-react";
 import { SignInSchema, SignInType } from "@/lib/types/auth-schemas";
 import { Button } from "@/components/ui/button";
+import { useShopStore } from "@/stores/ShopStore";
 
 type SignInFormProps = {
   onOpenChange: (open: boolean) => void;
 };
 
 export default function SignInForm({ onOpenChange }: SignInFormProps) {
+  const signIn = useShopStore((store) => store.signIn);
+
   // Define the form:
   const form = useForm<SignInType>({
     resolver: zodResolver(SignInSchema),
@@ -27,6 +30,9 @@ export default function SignInForm({ onOpenChange }: SignInFormProps) {
     toast.success(`Welcome back, ${JSON.stringify(data, null, 2)}`, {
       description: "This simulates a successful login after validating the form. Auth buttons should now be hidden.",
     });
+
+    // Simulate a successful sign in after registration:
+    signIn();
 
     onOpenChange(false);
   }
