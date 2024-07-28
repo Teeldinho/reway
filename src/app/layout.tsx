@@ -40,7 +40,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={cn("min-h-screen w-screen bg-background font-ptSans antialiased text-rewayBlack", ptSans.variable, suezOne.variable)}>
-        <section className="w-full flex flex-col gap-8 overflow-hidden">
+        <section className="w-full flex flex-col gap-8 overflow-hidden relative">
           <Header />
 
           <div className="flex gap-2 flex-1 overflow-x-hidden overflow-y-auto">

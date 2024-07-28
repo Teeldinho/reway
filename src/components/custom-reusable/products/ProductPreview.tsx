@@ -84,7 +84,7 @@ export default function ProductPreview({ product }: ProductCardProps) {
           ))}
         </div>
       </div>
-      <DialogContent className="bg-rewayLightGrey w-full md:min-w-[50vw] md:min-h-[80vh] p-0">
+      <DialogContent className="bg-rewayLightGrey w-full min-w-[80vw] lg:min-w-[50vw] lg:min-h-[80vh] p-0">
         <ProductPreviewEnlargedImage imageUrl={product.images[current - 1]} />
       </DialogContent>
     </Dialog>

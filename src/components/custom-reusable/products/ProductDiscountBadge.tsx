@@ -15,6 +15,7 @@ type ProductDiscountBadgeProps = BadgeProps & {
 
 export default function ProductDiscountBadge({ product, badgeSize = "large", className }: ProductDiscountBadgeProps) {
   const percentageOff = useMemo(() => getProductPercentageOff(product), [product]);
+
   return (
     <Badge
       className={cn(

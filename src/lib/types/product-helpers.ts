@@ -1,4 +1,4 @@
-import { Brand, Category, Product } from "@/lib/types/shop-schemas";
+import { Brand, Category, Product, ProductOptionsType } from "@/lib/types/shop-schemas";
 
 export enum CollectionsEnum {
   APPARELS = "Apparels",
@@ -23,9 +23,10 @@ export const CollectionSlug: Record<CollectionsEnum, string> = {
   [CollectionsEnum.GIFT]: generateSlug(CollectionsEnum.GIFT),
 };
 
-// Helper function to generate slug
 export function generateSlug(name: string): string {
-  return name.toLowerCase().replace(/ /g, "-");
+  const params = new URLSearchParams();
+  params.append("slug", name.toLowerCase().replace(/\s+/g, "-")); // Replace spaces with "+"
+  return params.toString().replace("slug=", ""); // Remove the "slug=" part from the string
 }
 
 export const getProductsForCategories = (products: Product[], category: string[]) =>
@@ -46,4 +47,8 @@ export function getCategoryById(categories: Category[], id: string) {
 
 export function getProductsInSameCategory(product: Product, allProducts: Product[]) {
   return allProducts.filter((p) => p.id !== product.id).filter((p) => p.categories.some((category) => product.categories.includes(category)));
+}
+
+export function getProductBySlug(products: Product[], slug: string) {
+  return products.find((product) => generateSlug(product.name) === decodeURIComponent(slug));
 }

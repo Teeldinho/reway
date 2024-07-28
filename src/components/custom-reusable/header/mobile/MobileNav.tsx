@@ -10,6 +10,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { NavLinks } from "../navLinks";
 import DesktopNavIconLinks from "../desktop/top-nav/DesktopNavIconLinks";
 import DesktopNavAuth from "../../auth/AuthTriggerButtons";
+import SearchStoreTrigger from "@/components/custom-reusable/SearchStoreTrigger";
 
 export default function MobileNav() {
   const [open, setOpen] = useState(false);
@@ -21,10 +22,14 @@ export default function MobileNav() {
       </Link>
 
       <Sheet open={open} onOpenChange={setOpen}>
-        <SheetTrigger asChild className="hover:cursor-pointer">
-          <Menu className="size-8 md:size-10" />
-        </SheetTrigger>
-        <SheetContent side="left" className="p-4 pr-0 bg-background flex flex-col gap-8">
+        <div className="flex items-center gap-4">
+          <SearchStoreTrigger />
+          <SheetTrigger asChild className="hover:cursor-pointer">
+            <Menu className="size-8 md:size-10" />
+          </SheetTrigger>
+        </div>
+
+        <SheetContent side="left" className="p-4 bg-background flex flex-col gap-8">
           <div>
             <MobileNavLink href="/" onOpenChange={setOpen}>
               <BrandLogo />

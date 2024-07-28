@@ -21,3 +21,9 @@ export const SearchAndFilterFormSchema = z.object({
 });
 
 export type SearchAndFilterFormSchemaType = z.infer<typeof SearchAndFilterFormSchema>;
+
+export const SearchSchema = z.object({
+  query: z.string().min(3, { message: "Search term must be at least 3 characters. Please try again." }),
+});
+
+export type SearchType = z.infer<typeof SearchSchema>;

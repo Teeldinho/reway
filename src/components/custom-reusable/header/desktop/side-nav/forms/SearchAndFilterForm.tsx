@@ -1,5 +1,3 @@
-// src/app/SearchAndFilterForm.tsx
-
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -15,16 +13,26 @@ import { Slider } from "@/components/ui/slider";
 import { Option, transformToOptions } from "@/lib/utils";
 import { ColourEnum } from "@/lib/types/colour-helpers";
 import { MultiSelect } from "@/components/ui/multi-select";
+import { useParamsStoreClient } from "@/stores/nuqs/paramsStore";
+import { filterParamsSerializer } from "@/stores/nuqs/slices/filterSlice";
+import { useRouter } from "next/navigation";
+import { searchParamsSerializer } from "@/stores/nuqs/slices/searchSlice";
 
 const transformedBrands: Option[] = transformToOptions(dummyBrandsData, "id", "name");
 
 export function SearchAndFilterForm() {
+  const router = useRouter();
+  const [filters] = useParamsStoreClient().filters();
+  const [search] = useParamsStoreClient().search();
+
+  // const validBrands = filters?.brands && filters.brands.every((brand) => dummyBrandsData.some((b) => b.id === brand.id));
+
   const form = useForm<SearchAndFilterFormSchemaType>({
     resolver: zodResolver(SearchAndFilterFormSchema),
     defaultValues: {
-      brands: dummyBrandsData.slice(0, 2),
+      brands: [],
       color: null,
-      pricingRange: 750,
+      pricingRange: 3500,
     },
   });
 
@@ -32,6 +40,20 @@ export function SearchAndFilterForm() {
     toast.success(`Filters to be applied are: ${JSON.stringify(data, null, 2)}`, {
       description: "Filters are not yet implemented.",
     });
+
+    router.replace(
+      `/search${
+        search
+          ? `${searchParamsSerializer({
+              ...search,
+            })}`
+          : ""
+      }${filterParamsSerializer({
+        brands: data.brands.map((brand) => brand.name),
+        color: data.color,
+        pricingRange: data.pricingRange,
+      })}`
+    );
   }
 
   return (
@@ -100,7 +122,7 @@ export function SearchAndFilterForm() {
             <FormItem>
               <FormLabel className="text-rewayGrey font-semibold uppercase">Pricing - R{value}</FormLabel>
               <FormControl>
-                <Slider min={0} max={2500} step={100} value={[value]} onValueChange={(val) => onChange(val[0])} />
+                <Slider min={0} max={5000} step={500} value={[value]} onValueChange={(val) => onChange(val[0])} />
               </FormControl>
               <FormMessage>{form.formState.errors.pricingRange?.message}</FormMessage>
             </FormItem>

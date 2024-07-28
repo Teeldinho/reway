@@ -2,7 +2,7 @@
 
 import SignIn from "@/components/custom-reusable/auth/SignIn";
 import SignUp from "./SignUp";
-import { useShopStore } from "@/stores/ShopStore";
+import { useShopStore } from "@/stores/zustand/ShopStore";
 import { LogOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -12,7 +12,11 @@ export default function AuthTriggerButtons() {
   return (
     <>
       {isSignedIn ? (
-        <Button onClick={signOut} variant={"destructive"} className="flex items-center gap-2">
+        <Button
+          onClick={signOut}
+          variant={"outline"}
+          className="flex items-center gap-2 text-destructive bg-destructive/5 border-2 border-destructive/20 hover:border-destructive hover:bg-destructive-foreground"
+        >
           <LogOut />
           <span>Sign Out</span>
         </Button>

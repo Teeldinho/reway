@@ -8,7 +8,7 @@ import { toast } from "sonner";
 import { MoveRight } from "lucide-react";
 import { SignInSchema, SignInType } from "@/lib/types/auth-schemas";
 import { Button } from "@/components/ui/button";
-import { useShopStore } from "@/stores/ShopStore";
+import { useShopStore } from "@/stores/zustand/ShopStore";
 
 type SignInFormProps = {
   onOpenChange: (open: boolean) => void;

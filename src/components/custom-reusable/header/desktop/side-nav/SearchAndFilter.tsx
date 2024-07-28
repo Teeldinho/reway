@@ -1,9 +1,9 @@
 import ChevronLeftIcon from "@/components/custom-reusable/icons/ChevronLeftIcon";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import SearchIcon from "@/components/custom-reusable/icons/SearchIcon";
 import { Button } from "@/components/ui/button";
 import { SearchAndFilterForm } from "@/components/custom-reusable/header/desktop/side-nav/forms/SearchAndFilterForm";
 import { Dispatch, SetStateAction } from "react";
+import SearchStoreTrigger from "@/components/custom-reusable/SearchStoreTrigger";
 
 type SearchAndFilterProps = {
   isHidden: boolean;
@@ -28,9 +28,7 @@ export default function SearchAndFilter({ isHidden, setIsHidden }: SearchAndFilt
         <div className="flex items-center gap-3">
           <CardTitle className="font-suezOne text-white text-[20px] leading-[26.12px] uppercase">Search Reway</CardTitle>
 
-          <Button variant={"ghost"} className="group max-w-fit size-[16px] hover:bg-transparent" size={"icon"}>
-            <SearchIcon className="w-full h-full fill-white group-hover:animate-pulse" />
-          </Button>
+          <SearchStoreTrigger />
         </div>
       </CardHeader>
       <CardContent className="pl-8 pt-4">

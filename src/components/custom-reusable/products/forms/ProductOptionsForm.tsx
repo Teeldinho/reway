@@ -8,17 +8,23 @@ import { toast } from "sonner";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { ShoppingCart } from "lucide-react";
 import { Product, ProductOptionsSchema, ProductOptionsType } from "@/lib/types/shop-schemas";
+import { useParamsStoreClient } from "@/stores/nuqs/paramsStore";
 
 type ProductCardProps = {
   product: Product;
 };
 
 export default function ProductOptionsForm({ product }: ProductCardProps) {
+  const [productQ, setProductQ] = useParamsStoreClient().product();
+
+  const validQuantity = productQ?.options?.quantity && productQ.options.quantity <= product.stockRemaining;
+  const validSize = productQ?.options?.size && product.sizes.includes(productQ.options.size);
+
   const form = useForm<ProductOptionsType>({
     resolver: zodResolver(ProductOptionsSchema),
     defaultValues: {
-      quantity: undefined,
-      size: undefined,
+      quantity: validQuantity ? productQ.options?.quantity : undefined,
+      size: validSize ? productQ.options?.size : undefined,
     },
   });
 
@@ -26,6 +32,10 @@ export default function ProductOptionsForm({ product }: ProductCardProps) {
     toast.success(`Product: ${product.name} / Options: ${JSON.stringify(data, null, 2)}`, {
       description: `Ideally, this is when we submit the validated form data to the backend to add the product to the cart.
       `,
+    });
+
+    setProductQ({
+      options: data,
     });
   }
 
