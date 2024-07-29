@@ -11,6 +11,7 @@ import { NavLinks } from "../navLinks";
 import DesktopNavIconLinks from "../desktop/top-nav/DesktopNavIconLinks";
 import DesktopNavAuth from "../../auth/AuthTriggerButtons";
 import SearchStoreTrigger from "@/components/custom-reusable/SearchStoreTrigger";
+import MobileFiltersTrigger from "@/components/custom-reusable/header/mobile/MobileFiltersTrigger";
 
 export default function MobileNav() {
   const [open, setOpen] = useState(false);
@@ -23,6 +24,7 @@ export default function MobileNav() {
 
       <Sheet open={open} onOpenChange={setOpen}>
         <div className="flex items-center gap-4">
+          <MobileFiltersTrigger />
           <SearchStoreTrigger />
           <SheetTrigger asChild className="hover:cursor-pointer">
             <Menu className="size-8 md:size-10" />

@@ -18,7 +18,11 @@ import { useRouter } from "next/navigation";
 
 const transformedBrands: Option[] = transformToOptions(dummyBrandsData, "id", "name");
 
-export function FiltersForm() {
+type FiltersFormProps = {
+  onOpenChange?: (open: boolean) => void;
+};
+
+export function FiltersForm({ onOpenChange }: FiltersFormProps) {
   const router = useRouter();
   const [filters] = useParamsStoreClient().filters();
 
@@ -36,6 +40,8 @@ export function FiltersForm() {
   });
 
   function onSubmit(data: SearchAndFilterFormSchemaType) {
+    onOpenChange?.(false);
+
     router.push(
       `/filter${filterParamsSerializer({
         brands: data.brands.map((brand) => brand.name),
@@ -118,8 +124,8 @@ export function FiltersForm() {
           )}
         />
 
-        <div className="w-full flex items-center pt-2">
-          <Button variant={"default"} size={"md"} type="submit" className="max-w-fit mx-auto">
+        <div className="w-full flex items-center pt-4">
+          <Button variant={"default"} size={"md"} type="submit" className="w-full lg:max-w-fit mx-auto">
             <SearchIcon className="size-[16px] fill-white group-hover:animate-pulse" />
             <p className="ml-3">Search</p>
           </Button>

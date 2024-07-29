@@ -18,14 +18,14 @@ export default function SearchStoreTrigger() {
     <>
       <AlertDialog open={open} onOpenChange={setOpen}>
         <AlertDialogTrigger asChild>
-          <Button variant={"ghost"} className="group max-w-fit  hover:scale-125 transition-transform duration-500" size={"icon"}>
-            <Search className="mr-2 lg:ml-2 size-8 lg:size-5 text-foreground lg:text-white" />
+          <Button variant={"ghost"} className="group max-w-fit  hover:scale-125 transition-transform duration-500 " size={"icon"}>
+            <Search className="mr-2 lg:ml-2 size-8 lg:size-5 text-muted-foreground lg:text-white" />
           </Button>
         </AlertDialogTrigger>
 
-        <AlertDialogContent className="w-full max-w-[550px]">
+        <AlertDialogContent className="w-full max-w-[550px] mx-2">
           <AlertDialogHeader className="space-y-1 pb-2">
-            <AlertDialogTitle className="font-suezOne uppercase text-3xl">Search Store</AlertDialogTitle>
+            <AlertDialogTitle className="font-suezOne uppercase text-xl lg:text-3xl text-left">Search Store</AlertDialogTitle>
           </AlertDialogHeader>
 
           <Button
