@@ -1,9 +1,9 @@
 import ChevronLeftIcon from "@/components/custom-reusable/icons/ChevronLeftIcon";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { SearchAndFilterForm } from "@/components/custom-reusable/header/desktop/side-nav/forms/SearchAndFilterForm";
 import { Dispatch, SetStateAction } from "react";
 import SearchStoreTrigger from "@/components/custom-reusable/SearchStoreTrigger";
+import { FiltersForm } from "@/components/custom-reusable/header/desktop/side-nav/forms//FiltersForm";
 
 type SearchAndFilterProps = {
   isHidden: boolean;
@@ -32,7 +32,7 @@ export default function SearchAndFilter({ isHidden, setIsHidden }: SearchAndFilt
         </div>
       </CardHeader>
       <CardContent className="pl-8 pt-4">
-        <SearchAndFilterForm />
+        <FiltersForm />
       </CardContent>
     </Card>
   );

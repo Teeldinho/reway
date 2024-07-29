@@ -4,7 +4,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm, Controller } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
-import { toast } from "sonner";
 import { SearchAndFilterFormSchema, SearchAndFilterFormSchemaType } from "@/lib/types/types-and-schemas";
 import SearchIcon from "@/components/custom-reusable/icons/SearchIcon";
 import { dummyBrandsData } from "@/lib/dummy-data";
@@ -16,39 +15,29 @@ import { MultiSelect } from "@/components/ui/multi-select";
 import { useParamsStoreClient } from "@/stores/nuqs/paramsStore";
 import { filterParamsSerializer } from "@/stores/nuqs/slices/filterSlice";
 import { useRouter } from "next/navigation";
-import { searchParamsSerializer } from "@/stores/nuqs/slices/searchSlice";
 
 const transformedBrands: Option[] = transformToOptions(dummyBrandsData, "id", "name");
 
-export function SearchAndFilterForm() {
+export function FiltersForm() {
   const router = useRouter();
   const [filters] = useParamsStoreClient().filters();
-  const [search] = useParamsStoreClient().search();
 
-  // const validBrands = filters?.brands && filters.brands.every((brand) => dummyBrandsData.some((b) => b.id === brand.id));
+  const isValidPricingRange = filters?.pricingRange && filters.pricingRange >= 0;
+  const isValidBrands = filters?.brands && filters.brands.length > 0;
+  const isValidColor = filters?.color && Object.values(ColourEnum).includes(filters.color);
 
   const form = useForm<SearchAndFilterFormSchemaType>({
     resolver: zodResolver(SearchAndFilterFormSchema),
     defaultValues: {
-      brands: [],
-      color: null,
-      pricingRange: 3500,
+      brands: isValidBrands ? dummyBrandsData.filter((brand) => filters.brands?.includes(brand.name)) : dummyBrandsData,
+      color: isValidColor ? filters.color : null,
+      pricingRange: isValidPricingRange ? filters.pricingRange : 3500,
     },
   });
 
   function onSubmit(data: SearchAndFilterFormSchemaType) {
-    toast.success(`Filters to be applied are: ${JSON.stringify(data, null, 2)}`, {
-      description: "Filters are not yet implemented.",
-    });
-
-    router.replace(
-      `/search${
-        search
-          ? `${searchParamsSerializer({
-              ...search,
-            })}`
-          : ""
-      }${filterParamsSerializer({
+    router.push(
+      `/filter${filterParamsSerializer({
         brands: data.brands.map((brand) => brand.name),
         color: data.color,
         pricingRange: data.pricingRange,

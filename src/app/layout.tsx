@@ -14,6 +14,7 @@ import CustomBreadcrumbs from "@/components/custom-reusable/CustomBreadcrumbs";
 import Footer from "@/components/custom-reusable/footer/Footer";
 import MailListPrompt from "@/components/custom-reusable/header/desktop/side-nav/MailListPrompt";
 import SideBanner from "@/components/custom-reusable/header/desktop/side-nav/SideBanner";
+import { Suspense } from "react";
 
 const suezOne = Suez_One({
   subsets: ["latin"],
@@ -52,7 +53,9 @@ export default function RootLayout({
                 <CardHeader className="z-20 p-0 w-full">
                   <CustomBreadcrumbs />
                 </CardHeader>
-                <CardContent className="flex-1 overflow-y-auto p-0 pb-8 lg:pb-4">{children}</CardContent>
+                <CardContent className="flex-1 overflow-y-auto p-0 pb-8 lg:pb-4">
+                  <Suspense>{children}</Suspense>
+                </CardContent>
               </Card>
             </div>
           </div>

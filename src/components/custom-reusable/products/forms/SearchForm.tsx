@@ -11,7 +11,6 @@ import { useRouter } from "next/navigation";
 import { SearchSchema, SearchType } from "@/lib/types/types-and-schemas";
 import { useParamsStoreClient } from "@/stores/nuqs/paramsStore";
 import { searchParamsSerializer } from "@/stores/nuqs/slices/searchSlice";
-import { filterParamsSerializer } from "@/stores/nuqs/slices/filterSlice";
 
 type SearchFormProps = {
   onOpenChange: (open: boolean) => void;
@@ -20,7 +19,6 @@ type SearchFormProps = {
 export default function SearchForm({ onOpenChange }: SearchFormProps) {
   const router = useRouter();
   const [search] = useParamsStoreClient().search();
-  const [filters] = useParamsStoreClient().filters();
 
   // Define the form:
   const form = useForm<SearchType>({
@@ -33,20 +31,10 @@ export default function SearchForm({ onOpenChange }: SearchFormProps) {
   async function onSubmit(data: SearchType) {
     onOpenChange(false);
 
-    toast.success(`Searching for ${JSON.stringify(data, null, 2)}`, {
-      description: "This simulates a successful search after validating the form. ",
-    });
-
-    router.replace(
+    router.push(
       `/search${searchParamsSerializer({
         q: data.query,
-      })}${
-        filters
-          ? `${filterParamsSerializer({
-              ...filters,
-            })}`
-          : ""
-      }`
+      })}`
     );
   }
 
