@@ -41,33 +41,33 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={cn("min-h-screen w-screen bg-background font-ptSans antialiased text-rewayBlack", ptSans.variable, suezOne.variable)}>
-        <section className="w-full flex flex-col gap-8 overflow-hidden relative">
-          <Header />
+        <Suspense fallback={"Loading"}>
+          <section className="w-full flex flex-col gap-8 overflow-hidden relative">
+            <Header />
 
-          <div className="flex gap-2 flex-1 overflow-x-hidden overflow-y-auto">
-            <SideNav />
+            <div className="flex gap-2 flex-1 overflow-x-hidden overflow-y-auto">
+              <SideNav />
 
-            <div className="min-h-full flex-1 flex flex-col px-4 lg:px-8 gap-8">
-              <TopBanner />
-              <Card className="border-none p-0 flex flex-col gap-4">
-                <CardHeader className="z-20 p-0 w-full">
-                  <CustomBreadcrumbs />
-                </CardHeader>
-                <CardContent className="flex-1 overflow-y-auto p-0 pb-8 lg:pb-4">
-                  <Suspense>{children}</Suspense>
-                </CardContent>
-              </Card>
+              <div className="min-h-full flex-1 flex flex-col px-4 lg:px-8 gap-8">
+                <TopBanner />
+                <Card className="border-none p-0 flex flex-col gap-4">
+                  <CardHeader className="z-20 p-0 w-full">
+                    <CustomBreadcrumbs />
+                  </CardHeader>
+                  <CardContent className="flex-1 overflow-y-auto p-0 pb-8 lg:pb-4">{children}</CardContent>
+                </Card>
+              </div>
             </div>
-          </div>
 
-          <div className="lg:hidden px-2 pb-2 space-y-8 mx-auto">
-            <SideBanner />
-            <MailListPrompt />
-          </div>
-          <Footer />
-        </section>
+            <div className="lg:hidden px-2 pb-2 space-y-8 mx-auto">
+              <SideBanner />
+              <MailListPrompt />
+            </div>
+            <Footer />
+          </section>
 
-        <Toaster position="top-center" richColors />
+          <Toaster position="top-center" richColors />
+        </Suspense>
       </body>
     </html>
   );
