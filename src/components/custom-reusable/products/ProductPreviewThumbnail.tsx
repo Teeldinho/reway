@@ -17,13 +17,13 @@ type ProductPreviewThumbnailProps = {
 export default function ProductPreviewThumbnail({ selected, index, onThumbClick, product }: ProductPreviewThumbnailProps) {
   return (
     <Card
-      className={cn("w-full h-full overflow-hidden bg-rewayLightGrey hover:cursor-pointer group relative", {
+      className={cn("w-full max-h-20 lg:max-h-fit overflow-hidden bg-rewayLightGrey hover:cursor-pointer group relative", {
         "ring-2 ring-primary bg-primary/10": selected,
       })}
       onClick={onThumbClick}
     >
       <CardContent className="p-0">
-        <AspectRatio ratio={1 / 1} className="relative h-full overflow-hidden">
+        <AspectRatio ratio={1 / 1} className="relative overflow-hidden">
           <Image
             src={product.images[index]}
             alt={`${product.name}-image`}
