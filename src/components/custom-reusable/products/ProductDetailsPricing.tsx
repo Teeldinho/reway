@@ -20,7 +20,7 @@ export default function ProductDetailsPricing({ product }: ProductCardProps) {
           {isDiscounted ? formatToRand(priceAfterDiscount) : formatToRand(price)}
         </h4>
         {isDiscounted && (
-          <p className="absolute -top-3 right-0 font-suezOne text-rewayGrey text-[14px] leading-[18.28px] line-through">{formatToRand(price)}</p>
+          <p className="absolute -top-3 right-0 font-suezOne text-rewayDarkGrey text-[14px] leading-[18.28px] line-through">{formatToRand(price)}</p>
         )}
       </div>
     </div>

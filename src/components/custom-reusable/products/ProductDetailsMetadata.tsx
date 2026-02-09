@@ -16,14 +16,14 @@ export default function ProductDetailsMetadata({ product }: ProductCardProps) {
   return (
     <ul className="w-full">
       <li className="w-full flex gap-4 text-[16px] leading-[20.7px]">
-        <h6 className="font-ptSans text-rewayGrey capitalize max-w-fit min-w-[30%]" style={{ width: "150px" }}>
+        <h6 className="font-ptSans text-rewayDarkGrey capitalize max-w-fit min-w-[30%]" style={{ width: "150px" }}>
           Fabrication
         </h6>
         <p className="font-ptSans text-black capitalize font-bold">{product.metadata.fabrication}</p>
       </li>
 
       <li className="w-full flex gap-4 text-[16px] leading-[20.7px]">
-        <h6 className="font-ptSans text-rewayGrey capitalize max-w-fit min-w-[30%]" style={{ width: "150px" }}>
+        <h6 className="font-ptSans text-rewayDarkGrey capitalize max-w-fit min-w-[30%]" style={{ width: "150px" }}>
           Colour
         </h6>
         <span className="flex items-center gap-2">
@@ -34,7 +34,7 @@ export default function ProductDetailsMetadata({ product }: ProductCardProps) {
       </li>
 
       <li className="w-full flex gap-4 text-[16px] leading-[20.7px]">
-        <h6 className="font-ptSans text-rewayGrey capitalize max-w-fit min-w-[30%]" style={{ width: "150px" }}>
+        <h6 className="font-ptSans text-rewayDarkGrey capitalize max-w-fit min-w-[30%]" style={{ width: "150px" }}>
           Brand
         </h6>
         <p className="font-ptSans text-black capitalize font-bold">{brand}</p>
