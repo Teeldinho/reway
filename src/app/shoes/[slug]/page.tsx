@@ -1,21 +1,25 @@
-import NotFound from "@/components/custom-reusable/NotFound";
 import ProductDetailsPage from "@/components/custom-reusable/products/ProductDetailsPage";
-import { buttonVariants } from "@/components/ui/button";
 import { dummyProductsData } from "@/lib/dummy-data";
-import { CollectionSlug, CollectionsEnum, getProductBySlug } from "@/lib/types/product-helpers";
-import Link from "next/link";
+import { CollectionsEnum, generateSlug, getProductBySlug } from "@/lib/types/product-helpers";
+import { notFound } from "next/navigation";
+
+const collectionId = CollectionsEnum.SHOES;
+
+const collectionProducts = dummyProductsData.filter((product) => product.collection === collectionId);
+
+export const dynamicParams = false;
+
+export function generateStaticParams() {
+  return collectionProducts.map((product) => ({
+    slug: generateSlug(product.name),
+  }));
+}
 
 export default function ProductPage({ params }: { params: { slug: string } }) {
-  const product = getProductBySlug(dummyProductsData, params.slug);
+  const product = getProductBySlug(collectionProducts, params.slug);
 
   if (!product) {
-    return (
-      <NotFound title="Product not found." message="The product you are looking for is not available.">
-        <Link href={CollectionSlug[CollectionsEnum.SHOES]} className={buttonVariants({ variant: "default" })}>
-          Go back to Shoes Collection
-        </Link>
-      </NotFound>
-    );
+    notFound();
   }
 
   return <ProductDetailsPage product={product} />;

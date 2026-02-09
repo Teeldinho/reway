@@ -1,9 +1,17 @@
+import type { Metadata } from "next";
 import ProductCard from "@/components/custom-reusable/products/ProductCard";
 import { Separator } from "@/components/ui/separator";
 import { dummyProductsData } from "@/lib/dummy-data";
 import { CollectionSlug, generateSlug } from "@/lib/types/product-helpers";
 import { searchParamsCache } from "@/stores/nuqs/slices/searchSlice";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  robots: {
+    index: false,
+    follow: false,
+  },
+};
 
 export default function Search({ searchParams }: { searchParams: Record<string, string | string[] | undefined> }) {
   const { q } = searchParamsCache.parse(searchParams);
@@ -29,7 +37,7 @@ export default function Search({ searchParams }: { searchParams: Record<string, 
       </div>
       <div className="flex-1 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 w-full">
         {searchProductsResults.map((product) => (
-          <Link href={`/${CollectionSlug[product.collection]}/${generateSlug(product.name)}`} key={product.id}>
+          <Link prefetch={false} href={`/${CollectionSlug[product.collection]}/${generateSlug(product.name)}`} key={product.id}>
             <ProductCard product={product} />
           </Link>
         ))}
