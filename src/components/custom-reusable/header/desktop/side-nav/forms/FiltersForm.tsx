@@ -15,6 +15,7 @@ import { MultiSelect } from "@/components/ui/multi-select";
 import { useParamsStoreClient } from "@/stores/nuqs/paramsStore";
 import { filterParamsSerializer } from "@/stores/nuqs/slices/filterSlice";
 import { useRouter } from "next/navigation";
+import { FILTER_COLOR_NONE, FILTER_PRICE_RANGE } from "@/lib/constants/filter";
 
 const transformedBrands: Option[] = transformToOptions(dummyBrandsData, "id", "name");
 
@@ -35,7 +36,7 @@ export function FiltersForm({ onOpenChange }: FiltersFormProps) {
     defaultValues: {
       brands: isValidBrands ? dummyBrandsData.filter((brand) => filters.brands?.includes(brand.name)) : dummyBrandsData,
       color: isValidColor ? filters.color : null,
-      pricingRange: isValidPricingRange ? filters.pricingRange : 3500,
+      pricingRange: isValidPricingRange ? filters.pricingRange : FILTER_PRICE_RANGE.DEFAULT,
     },
   });
 
@@ -88,14 +89,17 @@ export function FiltersForm({ onOpenChange }: FiltersFormProps) {
           render={({ field }) => (
             <FormItem>
               <FormLabel className="text-rewayGrey font-semibold uppercase">Colour</FormLabel>
-              <Select onValueChange={(value) => field.onChange(value === "none" ? null : value)} value={field.value || "none"}>
+              <Select
+                onValueChange={(value) => field.onChange(value === FILTER_COLOR_NONE ? null : value)}
+                value={field.value || FILTER_COLOR_NONE}
+              >
                 <FormControl className="text-rewayGrey uppercase">
                   <SelectTrigger>
                     <SelectValue placeholder="Select colour" />
                   </SelectTrigger>
                 </FormControl>
                 <SelectContent>
-                  <SelectItem key="none" value="none">
+                  <SelectItem key={FILTER_COLOR_NONE} value={FILTER_COLOR_NONE}>
                     All Colors
                   </SelectItem>
                   {Object.values(ColourEnum).map((colour) => (
@@ -117,7 +121,13 @@ export function FiltersForm({ onOpenChange }: FiltersFormProps) {
             <FormItem>
               <FormLabel className="text-rewayGrey font-semibold uppercase">Pricing - R{value}</FormLabel>
               <FormControl>
-                <Slider min={0} max={5000} step={500} value={[value]} onValueChange={(val) => onChange(val[0])} />
+                 <Slider
+                   min={FILTER_PRICE_RANGE.MIN}
+                   max={FILTER_PRICE_RANGE.MAX}
+                   step={FILTER_PRICE_RANGE.STEP}
+                   value={[value]}
+                   onValueChange={(val) => onChange(val[0])}
+                 />
               </FormControl>
               <FormMessage>{form.formState.errors.pricingRange?.message}</FormMessage>
             </FormItem>
@@ -127,7 +137,7 @@ export function FiltersForm({ onOpenChange }: FiltersFormProps) {
         <div className="w-full flex items-center pt-4">
           <Button variant={"default"} size={"md"} type="submit" className="w-full lg:max-w-fit mx-auto">
             <SearchIcon className="size-[16px] fill-white group-hover:animate-pulse" />
-            <p className="ml-3">Search</p>
+            <span className="ml-3">Search</span>
           </Button>
         </div>
       </form>
