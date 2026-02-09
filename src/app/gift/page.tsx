@@ -18,7 +18,7 @@ export default function Gift() {
       </div>
       <div className="flex-1 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 w-full">
         {filteredProducts.map((product) => (
-          <Link href={`/${CollectionSlug[collectionId]}/${generateSlug(product.name)}`} key={product.id}>
+          <Link prefetch={false} href={`/${CollectionSlug[collectionId]}/${generateSlug(product.name)}`} key={product.id}>
             <ProductCard key={product.id} product={product} />
           </Link>
         ))}

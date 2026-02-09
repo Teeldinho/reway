@@ -16,7 +16,11 @@ export default function ProductsInCategory({ product }: ProductsInCategoryProps)
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       {filteredProducts.map((product) => (
-        <Link href={`/${generateSlug(CollectionDisplayName[product.collection as CollectionsEnum])}/${generateSlug(product.name)}`} key={product.id}>
+        <Link
+          prefetch={false}
+          href={`/${generateSlug(CollectionDisplayName[product.collection as CollectionsEnum])}/${generateSlug(product.name)}`}
+          key={product.id}
+        >
           <ProductCard product={product} />
         </Link>
       ))}

@@ -2,7 +2,6 @@
 
 import { cn } from "@/lib/utils";
 import Link, { LinkProps } from "next/link";
-import { useRouter } from "next/navigation";
 
 type MobileLinkProps = LinkProps & {
   onOpenChange?: (open: boolean) => void;
@@ -11,13 +10,11 @@ type MobileLinkProps = LinkProps & {
 };
 
 export default function MobileNavLink({ href, onOpenChange, className, children, ...props }: MobileLinkProps) {
-  const router = useRouter();
-
   return (
     <Link
       href={href}
+      prefetch={false}
       onClick={() => {
-        router.push(href.toString());
         onOpenChange?.(false);
       }}
       className={cn(className)}

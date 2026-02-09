@@ -11,14 +11,16 @@ export default function DesktopNavMainLinks() {
   return (
     <ul className="flex items-center gap-8">
       {NavLinks.map((link) => (
-        <Link
-          key={link.title}
-          href={link.link}
-          scroll={false}
-          className={cn("text-rewayBlack hover:text-primary/90 font-suezOne uppercase text-base", { "text-primary": pathname.startsWith(link.link) })}
-        >
-          {link.title}
-        </Link>
+        <li key={link.title}>
+          <Link
+            href={link.link}
+            prefetch={false}
+            scroll={false}
+            className={cn("text-rewayBlack hover:text-primary/90 font-suezOne uppercase text-base", { "text-primary": pathname.startsWith(link.link) })}
+          >
+            {link.title}
+          </Link>
+        </li>
       ))}
     </ul>
   );
