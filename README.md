@@ -36,6 +36,71 @@ While many opt for traditional state managers, Reway Store demonstrates the powe
 - **Product Details**: View detailed product information with image carousel and product configurator. You can zoom in on images and select product options.
 - **State Management**: Utilizing URL for primary state management and Zustand for session state.
 
+## Recent Hardening Updates
+
+### Rendering Strategy & Route Hardening
+
+- **SSG (Static Site Generation) for Product Detail Routes**: Product detail pages now use `generateStaticParams` in App Router dynamic routes (`/shoes/[slug]`, `/apparels/[slug]`, `/equipment/[slug]`, `/gift/[slug]`) so known product URLs are generated at build time.
+  - **Why included**: Reduces runtime server/edge work for high-traffic product pages.
+  - **Issue solved**: Prevents avoidable request-time compute and improves response consistency.
+
+- **Strict Dynamic Param Validation (`dynamicParams = false`)**: Unknown slugs are rejected instead of being rendered on-demand.
+  - **Why included**: Enforces a strict allowlist of valid product route params.
+  - **Issue solved**: Reduces bot-driven random slug scans that inflate Edge Requests.
+
+- **SSR (Server-Side Rendering) preserved for query-driven routes**: `/search` and `/filter` remain request-time rendered because their output depends on URL query params.
+  - **Why included**: Query state must be evaluated per request for accurate search/filter results.
+  - **Issue solved**: Maintains correct URL-driven behavior while hardening expensive dynamic routes.
+
+- **Framework-native 404 flow (`notFound()` + `app/not-found.tsx`)**:
+  - **Why included**: Uses Next.js App Router canonical not-found handling.
+  - **Issue solved**: Avoids inconsistent fallback rendering and improves crawler handling for invalid paths.
+
+### Crawl & Indexing Controls
+
+- **REP (Robots Exclusion Protocol) via `robots.txt` metadata route**: Added App Router robots metadata route and route-level robots policy.
+- **`noindex,nofollow` for query-heavy pages**: Applied to `/search` and `/filter`.
+  - **Why included**: Query pages are high-cardinality and expensive for crawl budgets.
+  - **Issue solved**: Reduces crawler-driven Edge Requests and indexing churn.
+
+### Transfer & Request Optimization
+
+- **Prefetch policy tuning (`prefetch={false}` on high-cardinality link surfaces)**:
+  - **Why included**: Limits speculative prefetch fan-out from large product grids/navigation.
+  - **Issue solved**: Reduces background request volume that contributes to Edge overages.
+
+- **Next.js Image Optimization tuning**:
+  - Added explicit responsive `sizes`.
+  - Enabled modern formats (`AVIF`, `WebP`) and tuned cache settings (`minimumCacheTTL`, curated size sets).
+  - **Why included**: Improves image payload selection and cache efficiency.
+  - **Issue solved**: Reduces Fast Origin Transfer and image-related bandwidth waste.
+
+### URL State Reliability (nuqs)
+
+- **URL-as-source-of-truth parser alignment**:
+  - Removed implicit filter defaults that made filter state appear active without URL params.
+  - Simplified conflicting query update flows.
+  - Corrected select trigger behavior and state synchronization in form controls.
+  - **Why included**: Keeps query params, forms, and rendered output deterministic.
+  - **Issue solved**: Fixes search/filter/options behavior where URL state appeared non-functional.
+
+### Hydration & Semantic Stability
+
+- **Hydration mismatch hardening**:
+  - Fixed invalid DOM nesting and semantic structure inconsistencies.
+  - Added client hydration guard for persisted auth-dependent UI branch.
+  - **Why included**: Preserves SSR/CSR markup parity.
+  - **Issue solved**: Eliminates runtime hydration mismatch errors.
+
+### Security Baseline
+
+- **Patched Next.js Runtime Upgrade**: Upgraded from `14.2.5` to `14.2.35` as part of RSC/App Router hardening.
+  - **Why included**: Aligns runtime with patched security line for known advisories.
+  - **Issue solved**: Mitigates exposure tied to vulnerable versions.
+
+- **Reference**: React security advisory on React Server Components  
+  https://react.dev/blog/2025/12/03/critical-security-vulnerability-in-react-server-components
+
 ## Advantages of Using URL for State Management
 
 1. **Sharable Links**: Users can share URLs to preserve the current state of the application.
@@ -58,6 +123,8 @@ While many opt for traditional state managers, Reway Store demonstrates the powe
    ```
    cp .env.example .env.local
    ```
+
+   `NEXT_PUBLIC_SITE_URL` is used for host-aware metadata (for example, `robots.txt` generation).
 
 2. **Install dependencies**:
 
