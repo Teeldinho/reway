@@ -22,7 +22,7 @@ export default function SearchAndFilter({ isHidden, setIsHidden }: SearchAndFilt
           }}
         >
           <ChevronLeftIcon className="size-[16px] fill-white group-hover:fill-white/80 group-hover:animate-pulse pr-2" />
-          <p className="text-white font-ptSans text-base capitalize">Hide</p>
+          <span className="text-white font-ptSans text-base capitalize">Hide</span>
         </Button>
 
         <div className="flex items-center gap-3">

@@ -55,12 +55,16 @@ export default function Footer() {
         <div className="md:col-start-4">
           <h4 className="text-xl font-bold mb-4 leading-[26.12px] font-suezOne">Follow us!</h4>
           <ul className="flex space-x-6">
-            <Button variant={"ghost"} className="max-w-fit hover:bg-transparent group" size={"icon"}>
-              <FacebookIcon className="size-16 min-w-full h-full fill-white group-hover:fill-primary" />
-            </Button>
-            <Button variant={"ghost"} className="max-w-fit hover:bg-transparent group" size={"icon"}>
-              <InstagramIcon className="size-16 min-w-full h-full fill-white group-hover:fill-primary" />
-            </Button>
+            <li>
+              <Button variant={"ghost"} className="max-w-fit hover:bg-transparent group" size={"icon"}>
+                <FacebookIcon className="size-16 min-w-full h-full fill-white group-hover:fill-primary" />
+              </Button>
+            </li>
+            <li>
+              <Button variant={"ghost"} className="max-w-fit hover:bg-transparent group" size={"icon"}>
+                <InstagramIcon className="size-16 min-w-full h-full fill-white group-hover:fill-primary" />
+              </Button>
+            </li>
           </ul>
         </div>
       </div>

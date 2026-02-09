@@ -17,7 +17,7 @@ export default function SideNav() {
         setIsHidden(!isHidden);
       }}
     >
-      <p className="text-white font-ptSans text-base capitalize">Show</p>
+      <span className="text-white font-ptSans text-base capitalize">Show</span>
       <ChevronRight className="size-5" />
     </Button>
   ) : (

@@ -95,7 +95,7 @@ export default function ProductOptionsForm({ product }: ProductCardProps) {
         <div className="w-full flex items-center pt-2">
           <Button size={"lg"} type="submit" className="w-full group">
             <ShoppingCart className="size-7 group-hover:animate-bounce" />
-            <p className="pl-3">Add to Cart</p>
+            <span className="pl-3">Add to Cart</span>
           </Button>
         </div>
       </form>

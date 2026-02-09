@@ -5,9 +5,24 @@ import SignUp from "./SignUp";
 import { useShopStore } from "@/stores/zustand/ShopStore";
 import { LogOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useEffect, useState } from "react";
 
 export default function AuthTriggerButtons() {
   const { signOut, isSignedIn } = useShopStore((store) => store);
+  const [hasHydrated, setHasHydrated] = useState(false);
+
+  useEffect(() => {
+    setHasHydrated(true);
+  }, []);
+
+  if (!hasHydrated) {
+    return (
+      <div className="flex gap-1">
+        <SignIn />
+        <SignUp />
+      </div>
+    );
+  }
 
   return (
     <>
