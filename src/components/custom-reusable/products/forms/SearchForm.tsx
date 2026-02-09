@@ -27,6 +27,8 @@ export default function SearchForm({ onOpenChange }: SearchFormProps) {
     },
   });
 
+  const formResetKey = search.q ?? "";
+
   async function onSubmit(data: SearchType) {
     onOpenChange(false);
 
@@ -39,7 +41,7 @@ export default function SearchForm({ onOpenChange }: SearchFormProps) {
 
   return (
     <>
-      <Form {...form}>
+      <Form key={formResetKey} {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
           <FormField
             control={form.control}

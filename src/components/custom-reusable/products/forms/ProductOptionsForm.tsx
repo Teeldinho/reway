@@ -28,6 +28,8 @@ export default function ProductOptionsForm({ product }: ProductCardProps) {
     },
   });
 
+  const formResetKey = `${productQ?.options?.size ?? ""}-${productQ?.options?.quantity ?? ""}`;
+
   function onSubmit(data: ProductOptionsType) {
     toast.success(`Product: ${product.name} / Options: ${JSON.stringify(data, null, 2)}`, {
       description: `Ideally, this is when we submit the validated form data to the backend to add the product to the cart.
@@ -40,7 +42,7 @@ export default function ProductOptionsForm({ product }: ProductCardProps) {
   }
 
   return (
-    <Form {...form}>
+    <Form key={formResetKey} {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="w-full space-y-5">
         <FormField
           control={form.control}

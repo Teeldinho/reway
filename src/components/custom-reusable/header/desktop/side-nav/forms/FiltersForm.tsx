@@ -27,18 +27,28 @@ export function FiltersForm({ onOpenChange }: FiltersFormProps) {
   const router = useRouter();
   const [filters] = useParamsStoreClient().filters();
 
-  const isValidPricingRange = filters?.pricingRange && filters.pricingRange >= 0;
   const isValidBrands = filters?.brands && filters.brands.length > 0;
   const isValidColor = filters?.color && Object.values(ColourEnum).includes(filters.color);
+
+  const selectedBrands = isValidBrands ? dummyBrandsData.filter((brand) => filters.brands?.includes(brand.name)) : [];
+
+  const selectedColor = isValidColor ? filters.color : null;
+
+  const selectedPricingRange =
+    typeof filters?.pricingRange === "number" && filters.pricingRange >= FILTER_PRICE_RANGE.MIN
+      ? filters.pricingRange
+      : FILTER_PRICE_RANGE.DEFAULT;
 
   const form = useForm<SearchAndFilterFormSchemaType>({
     resolver: zodResolver(SearchAndFilterFormSchema),
     defaultValues: {
-      brands: isValidBrands ? dummyBrandsData.filter((brand) => filters.brands?.includes(brand.name)) : dummyBrandsData,
-      color: isValidColor ? filters.color : null,
-      pricingRange: isValidPricingRange ? filters.pricingRange : FILTER_PRICE_RANGE.DEFAULT,
+      brands: selectedBrands,
+      color: selectedColor,
+      pricingRange: selectedPricingRange,
     },
   });
+
+  const formResetKey = `${selectedBrands.map((brand) => brand.id).join(",")}-${selectedColor ?? FILTER_COLOR_NONE}-${selectedPricingRange}`;
 
   function onSubmit(data: SearchAndFilterFormSchemaType) {
     onOpenChange?.(false);
@@ -53,7 +63,7 @@ export function FiltersForm({ onOpenChange }: FiltersFormProps) {
   }
 
   return (
-    <Form {...form}>
+    <Form key={formResetKey} {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="w-full space-y-5">
         <FormField
           control={form.control}
