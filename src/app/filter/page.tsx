@@ -16,13 +16,19 @@ export const metadata: Metadata = {
 export default function Filter({ searchParams }: { searchParams: Record<string, string | string[] | undefined> }) {
   const filters = filterParamsCache.parse(searchParams);
 
+  const hasBrandFilters = Array.isArray(filters.brands) && filters.brands.length > 0;
+  const hasColorFilter = Boolean(filters.color);
+  const hasPricingRangeFilter = typeof filters.pricingRange === "number";
+  const hasActiveFilters = hasBrandFilters || hasColorFilter || hasPricingRangeFilter;
+  const brandFilters = hasBrandFilters ? filters.brands : [];
+
   let filteredProducts = dummyProductsData;
 
-  if (filters) {
+  if (hasActiveFilters) {
     // Apply brand filter
-    if (filters.brands && filters.brands.length > 0) {
+    if (hasBrandFilters) {
       filteredProducts = filteredProducts.filter((product) =>
-        filters.brands!.includes(getBrandForProduct(dummyBrandsData, product.metadata.brandId))
+        brandFilters.includes(getBrandForProduct(dummyBrandsData, product.metadata.brandId))
       );
     }
 
@@ -31,8 +37,10 @@ export default function Filter({ searchParams }: { searchParams: Record<string, 
       filteredProducts = filteredProducts.filter((product) => product.metadata.colour === filters.color);
     }
 
-    if (filters.pricingRange) {
-      filteredProducts = filteredProducts.filter((product) => product.price <= filters.pricingRange);
+    const pricingRange = filters.pricingRange;
+
+    if (typeof pricingRange === "number") {
+      filteredProducts = filteredProducts.filter((product) => product.price <= pricingRange);
     }
   }
 
@@ -41,9 +49,9 @@ export default function Filter({ searchParams }: { searchParams: Record<string, 
       <div className="w-full space-y-8">
         <div className="space-y-1">
           <p className="text-sm text-rewayGrey font-ptSans font-semibold tracking-widest">
-            {filters ? "Now showing products that match the criteria:" : "Now showing all products"}
+            {hasActiveFilters ? "Now showing products that match the criteria:" : "Now showing all products"}
           </p>
-          <h1 className="font-suezOne text-3xl uppercase">{`${filters ? "Filtered Products" : "All Products"}`}</h1>
+          <h1 className="font-suezOne text-3xl uppercase">{hasActiveFilters ? "Filtered Products" : "All Products"}</h1>
         </div>
 
         <Separator className="w-full" />

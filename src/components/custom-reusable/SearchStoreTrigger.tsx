@@ -6,12 +6,10 @@ import { SearchX } from "lucide-react";
 import { AlertDialog, AlertDialogContent, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "@/components/ui/alert-dialog";
 import SearchForm from "./products/forms/SearchForm";
 import { useState } from "react";
-import { useParamsStoreClient } from "@/stores/nuqs/paramsStore";
 import { useRouter } from "next/navigation";
 
 export default function SearchStoreTrigger() {
   const [open, setOpen] = useState(false);
-  const [_, setSearch] = useParamsStoreClient().search();
   const router = useRouter();
 
   return (
@@ -28,17 +26,14 @@ export default function SearchStoreTrigger() {
             <AlertDialogTitle className="font-suezOne uppercase text-xl lg:text-3xl text-left">Search Store</AlertDialogTitle>
           </AlertDialogHeader>
 
-          <Button
-            className="absolute top-5 right-6 text-destructive"
-            variant={"secondary"}
-            onClick={() =>
-              setSearch({
-                q: null,
-              })
-                .then(() => setOpen(false))
-                .then(() => router.push("/"))
-            }
-          >
+            <Button
+              className="absolute top-5 right-6 text-destructive"
+              variant={"secondary"}
+              onClick={() => {
+                setOpen(false);
+                router.push("/");
+              }}
+            >
             <SearchX className="size-5 mr-2" />
             Clear
           </Button>
