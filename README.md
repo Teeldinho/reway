@@ -53,25 +53,31 @@ While many opt for traditional state managers, Reway Store demonstrates the powe
 
 ## Getting Started
 
-1. **Install dependencies**:
+1. **Set environment variables (optional but recommended)**:
+
+   ```
+   cp .env.example .env.local
+   ```
+
+2. **Install dependencies**:
 
    ```
    npm install
    ```
 
-2. **Start the development server**:
+3. **Start the development server**:
 
    ```
    npm run dev
    ```
 
-3. **Build for production**:
+4. **Build for production**:
 
    ```
    npm run build
    ```
 
-4. **Start the production server**:
+5. **Start the production server**:
 
    ```
    npm start
