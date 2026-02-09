@@ -6,6 +6,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { Product } from "@/lib/types/shop-schemas";
+import { PRODUCT_PREVIEW_THUMBNAIL_IMAGE_SIZES } from "@/lib/constants/image-sizes";
 
 type ProductPreviewThumbnailProps = {
   selected: boolean;
@@ -28,6 +29,7 @@ export default function ProductPreviewThumbnail({ selected, index, onThumbClick,
             src={product.images[index]}
             alt={`${product.name}-image`}
             fill
+            sizes={PRODUCT_PREVIEW_THUMBNAIL_IMAGE_SIZES}
             className="object-cover group-hover:scale-105 transition-transform duration-500"
           />
         </AspectRatio>

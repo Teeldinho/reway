@@ -3,12 +3,13 @@ import Image from "next/image";
 import TopBannerIMG from "../../../../public/assets/Top Banner.png";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
+import { TOP_BANNER_IMAGE_SIZES } from "@/lib/constants/image-sizes";
 
 export default function TopBanner() {
   const router = useRouter();
   return (
     <div className="relative w-full min-h-[90px] lg:max-h-[90px] rounded-[2px]">
-      <Image src={TopBannerIMG} alt="Top Banner" fill className="object-fill" />
+      <Image src={TopBannerIMG} alt="Top Banner" fill sizes={TOP_BANNER_IMAGE_SIZES} className="object-fill" />
 
       <div className="absolute w-full h-full flex flex-row items-center justify-between px-4 lg:px-16 z-10">
         <div className="min-w-fit text-white">

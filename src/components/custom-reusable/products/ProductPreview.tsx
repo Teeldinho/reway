@@ -11,6 +11,7 @@ import ProductPreviewEnlargedImage from "./ProductPreviewEnlargedImage";
 import { Product } from "@/lib/types/shop-schemas";
 import ProductDiscountBadge from "@/components/custom-reusable/products/ProductDiscountBadge";
 import ProductLowStockBadge from "@/components/custom-reusable/products/ProductLowStockBadge";
+import { PRODUCT_PREVIEW_IMAGE_SIZES } from "@/lib/constants/image-sizes";
 
 type ProductCardProps = {
   product: Product;
@@ -54,6 +55,7 @@ export default function ProductPreview({ product }: ProductCardProps) {
                             src={p}
                             alt={`${product.name}-image`}
                             fill
+                            sizes={PRODUCT_PREVIEW_IMAGE_SIZES}
                             className="object-cover group-hover:scale-105 transition-transform duration-500"
                           />
                         </AspectRatio>
