@@ -59,10 +59,14 @@ export const MultiSelect = React.forwardRef<HTMLButtonElement, MultiSelectProps>
     const [isAnimating, setIsAnimating] = React.useState(false);
 
     React.useEffect(() => {
-      if (JSON.stringify(selectedValues) !== JSON.stringify(defaultValue)) {
-        setSelectedValues(defaultValue);
-      }
-    }, [defaultValue, selectedValues]);
+      setSelectedValues((previousValues) => {
+        if (JSON.stringify(previousValues) === JSON.stringify(defaultValue)) {
+          return previousValues;
+        }
+
+        return defaultValue;
+      });
+    }, [defaultValue]);
 
     const handleInputKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
       if (event.key === "Enter") {
@@ -110,6 +114,7 @@ export const MultiSelect = React.forwardRef<HTMLButtonElement, MultiSelectProps>
       <Popover open={isPopoverOpen} onOpenChange={setIsPopoverOpen} modal={modalPopover}>
         <PopoverTrigger asChild>
           <Button
+            type="button"
             ref={ref}
             {...props}
             onClick={handleTogglePopover}
