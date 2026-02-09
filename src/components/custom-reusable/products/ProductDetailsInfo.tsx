@@ -22,7 +22,7 @@ export default function ProductDetailsInfoCard({ product }: ProductCardProps) {
         <CardTitle className="p-0 font-suezOne text-[20px] leading-[26.12px] text-black uppercase font-normal">{product.name}</CardTitle>
         <CardDescription className="font-ptSans font-bold flex items-center gap-3 text-rewayLightGrey">
           <Store className="size-3" />
-          <p className="font-ptSans text-[12px] leading-[15.53px] uppercase font-normal">{brand}</p>
+          <span className="font-ptSans text-[12px] leading-[15.53px] uppercase font-normal">{brand}</span>
         </CardDescription>
       </CardHeader>
 

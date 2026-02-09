@@ -1,6 +1,5 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import ArrowRightIcon from "../icons/ArrowRightIcon";
 import { formatToRand } from "@/lib/utils";
@@ -13,6 +12,7 @@ import ProductLowStockBadge from "@/components/custom-reusable/products/ProductL
 import { Suspense } from "react";
 import { getBrandForProduct } from "@/lib/types/product-helpers";
 import { Product } from "@/lib/types/shop-schemas";
+import { PRODUCT_CARD_IMAGE_SIZES } from "@/lib/constants/image-sizes";
 
 type ProductCardProps = {
   product: Product;
@@ -27,6 +27,7 @@ export default function ProductCard({ product }: ProductCardProps) {
             src={product.images[0]}
             alt={`${product.name}-image`}
             fill
+            sizes={PRODUCT_CARD_IMAGE_SIZES}
             className="object-cover group-hover:scale-110 transition-transform duration-500"
           />
         </AspectRatio>
@@ -49,13 +50,13 @@ export default function ProductCard({ product }: ProductCardProps) {
             {product.name}
           </CardTitle>
           <CardDescription className="font-ptSans font-bold flex items-center gap-2 text-rewayGrey">
-            <div className="size-6">
+            <span className="size-6 inline-flex">
               <StoreIcon className="w-full h-full fill-rewayGrey" />
-            </div>
+            </span>
 
             {/* Similarly, this suspense fallback simulates a loading state for the brand name. */}
-            <Suspense fallback={<p className="text-sm">Determining brand...</p>}>
-              <p>{getBrandForProduct(dummyBrandsData, product.metadata.brandId)}</p>
+            <Suspense fallback={<span className="text-sm">Determining brand...</span>}>
+              <span>{getBrandForProduct(dummyBrandsData, product.metadata.brandId)}</span>
             </Suspense>
           </CardDescription>
         </CardContent>
@@ -66,13 +67,10 @@ export default function ProductCard({ product }: ProductCardProps) {
             <h4 className="font-suezOne text-primary text-[20px] leading-[26.12px]">{formatToRand(product.price)}</h4>
           </Suspense>
 
-          <Button
-            variant={"link"}
-            className="font-ptSans font-semibold flex gap-4 items-center group-hover:text-primary text-rewayGrey hover:text-primary capitalize pr-0 text-[14px] leading-[18.2px *:transition-all *:duration-300"
-          >
+          <span className="font-ptSans font-semibold flex gap-4 items-center group-hover:text-primary text-rewayGrey capitalize pr-0 text-[14px] leading-[18.2px *:transition-all *:duration-300">
             View
             <ArrowRightIcon className="w-[13px] h-[12px] fill-rewayGrey group-hover:fill-primary group-hover:-rotate-45" />
-          </Button>
+          </span>
         </CardFooter>
       </div>
     </Card>

@@ -33,14 +33,14 @@ export default function ProductDetailsPage({ product }: ProductDetailsInfoCardPr
       {/* Related Category Section  */}
       {relatedProductsToBeShown && (
         <section className="w-full flex flex-col gap-8">
-          <span className="flex items-center gap-4">
-            <span className="text-xl leading-[26.12px] font-suezOne uppercase text-rewayBlack flex items-center gap-1">
-              <h2>More from</h2>
-              <h2 className="text-primary">{getCategoryById(dummyCategoriesData, product.categories[0])?.name}</h2>
-            </span>
+          <div className="flex items-center gap-4">
+            <h2 className="text-xl leading-[26.12px] font-suezOne uppercase text-rewayBlack flex items-center gap-1">
+              <span>More from</span>
+              <span className="text-primary">{getCategoryById(dummyCategoriesData, product.categories[0])?.name}</span>
+            </h2>
 
             <Separator className="flex-1 bg-rewayGrey h-[2px] rounded" />
-          </span>
+          </div>
 
           <ProductsInCategory product={product} />
         </section>
