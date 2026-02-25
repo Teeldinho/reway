@@ -4,8 +4,6 @@ Reway Store is a feature-rich e-commerce application that highlights modern web 
 
 While many opt for traditional state managers, Reway Store demonstrates the powerful capabilities of using URLs as a state store, providing enhanced flexibility and performance through options like shallow routing and throttling.
 
-[Check Out The Demo (link)](https://reway.teeldinho.co.za/)
-
 ![Reference Design](public/assets/Mock%20up.svg)
 
 ## Project Overview
